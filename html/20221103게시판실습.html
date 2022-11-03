@@ -1,11 +1,6 @@
 <html>
     <head>
-          <text>방명록입니다</text>
-
-          
-    </head>
-    <body>
-    <script>
+        <script>
                 num=0; //전역변수
          function add() {
             
@@ -36,11 +31,17 @@
                 var input1 = document.getElementById("input1").value;
                 var input2 = document.getElementById("input2").value;
                 }
-    </script>
-        <br>작성자
+        </script>  
+
+          
+    </head>
+    <body>
+        <p>방명록입니다.</p>
+    
+        <th>작성자</th>
         <input type="text" id="input1" > </br> 
-        <br>내용
-        <input type="text" id="input2"> </br>
+        <th>내용</th>
+        <input type="text" id="input2" style="width: 560px;"> </br>
 
         <br>
         <button type="button" onclick="add()">작성</button>
