@@ -1,0 +1,90 @@
+<script>
+     var cat = {
+         name: '나비',
+         age: 1,
+         mew: function() {
+              return "야옹";
+         }
+     }
+     console.log(cat);
+     console.log( cat.name );
+     console.log (cat.mew());
+
+     function hello() {
+        return "안녕";
+     }
+     function hi() {
+         console.log("hi");
+     }
+         console.log(hi());
+         var a= hello();
+         console.log(a);
+        //  console.log( hello() );
+        var arr1 = [1,2,3,'a','b','c'];
+        var arr2 = new Array (1, 2, 3, 'a', 'b','c');
+        console.log( arr1 );
+        console.log( arr1[0]);
+        console.log( arr1.indexOf('a'));
+        console.log( "length : " + arr1.length );
+
+        arr1.push('d'); //가장 마지막에 요소 추가
+        console.log (arr1) ;
+        arr1.pop(); //가장 마지막 요소 제거
+        console.log( arr1);
+        
+        console.log( arr1[2]);
+        arr1.unshift('0'); //r가장 앞의 요소 추가
+        console.log( arr1[2]);   
+        console.log( arr1);
+        arr1.shift(); // 가장 앞의 요소 제거
+        console.log( arr1[2]);
+        console.log(arr1 );
+
+        var me = {
+            name: '홍길동',
+            birth: '0101'
+        };
+        console.log( me);
+        console.log( me ["name"]);
+        console.log ( me.name);  //위에거나 이거나 둘다 써도되는데 배열에서는 .으로하면 안됨
+
+        me.gender = 'M'; 
+        me ["age"]= 10; //이건 숫자라서 다옴표 ㄴㄴ gender는 새로운 키를 준거고..me.age라고 써도 똑같다!
+        console.log(me); 
+
+        //정리
+        
+        var ar = [1,2 ];
+        //배열에서 값을 가져올때는 index를 기반으로 가져온다
+        console.log ( ar [0])
+        // console.log( ar.0 ); 배열에선 이렇게 점으로쓰면안된다 쩜은 ar중에서 쩜뒤에있는걸 가져온다(?)라는 의미
+
+        console.log("---------");
+        var date = new Date();
+        console.log(date);
+        
+        console.log( date.getYear());
+        console.log( date.getFullYear());
+        console.log( date.getDate());
+        console.log( date.getDay());
+        console.log( date.getTime());
+        console.log( date.getHours());
+
+        console.log("-------");
+
+        console.log(Math.min());
+        console.log(Math.min( -10, 2, 10));
+        console.log( Math.min(0, 'a',5));
+
+        console.log( Math.max( -10, 2, 10));
+
+        console.log( Math.random());
+        var min = 1; var max = 10;
+        console.log( Math.random() * (max-min) + min);
+
+        console.log( Math.round(1.2));
+        console.log( Math.round(-1.7));
+
+        console.log( Math.floor(1.9));
+        console.log( Math.ceil(1.1));
+</script>

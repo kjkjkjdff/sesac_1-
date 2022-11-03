@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Document</title>
+        <script>
+            console.log( document.documentElement );
+            console.log( document.head );
+            console.log( document.title );
+            console.log ( document.URL );
+            console.log (document.domain );
+        </script>
+    </head>
+    <body>
+        <img src="./귤.jpg" widhth="100" hegiht="100">
+        <img src="./귤.jpg" widhth="100" hegiht="100">
+        <img src="./귤.jpg" widhth="100" hegiht="100">
+        <div id="div1">
+           <input type="text" id="input" value="입력값">
+           <p class="css1">p1</p>
+           <p class="css1">p2</p>
+           <div>
+             <p class="css1">p3</p>
+           </div>
+           <button type="button" onclick="getData();">input 버튼</button>
+           <button type="button" onclick="getData2();">p태그 버튼</button>
+        </div>
+
+        <script>
+            console.log( document.getElementById("input1"));//아이디가 인풋인애를 가져와서 출력하는거
+            console.log( document.getElementsByClassName("css1"));
+            console.log( document.getElementsByClassName("css1"[0]));//0번째인덱스인 p1가져옴
+            console.log( document.getElementsByTagName("img"));
+            
+            console.log( document.querySelector("#input"));
+            console.log( document.querySelector(".css1")); //위에있는거한개만가져옴
+            console.log( document.querySelectorAll(".css1")); //노드리스트?
+
+            function getData() {
+              var input = document.getElementById("input1");
+             console.log( input.value ); //가져오려면 내가선택한 인풋.밸류로 가져옴
+            }
+            function getData2() {
+                var p1 = document.getElementsByClassName("css1")[0];  //.css1라고하며 ㄴ오류남 (?)점은 쿼리셀렉터에서만씀
+                console.log( p1);
+                console.log (p1.value);
+                console.log( p1.text);  //p태그는 밸류라는 속성이없음. 인풋태그에는 밸류존재.
+                console.log( p1.html);
+                console.log( p1.innerText);
+                console.log( p1.innerHTML);
+            
+                // p1.innerText= "p태그입니다.";   //여기에 <strong>하면 그대로 문자가나옴
+                p1.innerHTML= "<strong>p태그입니다</strong>";
+            }   
+        </script>
+    </body>
+</html>

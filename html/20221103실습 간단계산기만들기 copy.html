@@ -1,0 +1,63 @@
+<html>
+    <head>
+
+
+    </head>
+    <body>
+     <br>값1: 
+     <input type="text" id="input1" > </br> 
+     <br>값2:
+     <input type="text" id="input2" > </br>
+     <br>연산자:
+     <input type="text" id="cal" > </br>
+     <br>결과:
+     <input type="text" id="result" > </br>
+     <br>
+     <button type="button" onclick="getData3()">계산하기</button>
+     <button type="button" onclick="refresh()">초기화</button>
+     </br>
+
+    <script>
+             
+            function getData3() {
+                var input1 = document.getElementById("input1").value;
+                // input1이라는 id의 입력창의 value를 input1 변수에 넣겠다.
+                var input2 = document.getElementById("input2").value;
+              
+                var v1= Number (input1);
+                var v2= Number (input2);
+
+                var v3;
+
+                var op = document.getElementById("cal").value;
+                // cal이라는 id를 가진 입력창의 value를 op 변수에 넣겠다.
+                if ( op == "+" ) {
+                    v3 = v1 + v2
+                } else if ( op == "-" ) {
+                    v3 = v1 - v2;
+                
+                } else if ( op == "*" ){
+                    v3 = v1 * v2
+                } else if ( op == "/") {
+                    v3 = v1 / v2
+                }
+                document.getElementById("result").value = v3;
+                // v3의 값을 id값이 result인 입력창의 value에 넣겠다.
+                
+                
+            }
+            function refresh() {   //refresh부분이름바꿔도 되는데 실행하는 부분?도 이름같이바꿔야됨
+                document.getElementById("input1").value = "";
+
+                document.getElementById("input2").value = "";
+                document.getElementById("cal").value = "";
+                document.getElementById("result").value = "";
+            }
+    </script>
+    </body>
+</html>
+
+<!--
+    a = 3 > a에 3을 넣겠다.
+    b = a => b에 a의 값을 넣겠다.
+-->

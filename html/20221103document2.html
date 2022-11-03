@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script>
+           function imgChange(){
+            var tag= document.querySelector("img");
+            console.log(tag);
+            console.log(tag.src); //내가선택한 태그요소의 src속성을 가져온다 
+            console.log( tag.width);  
+            tag.src = "./캡아방패.jpg";
+           }
+
+            function add() {
+                 var li = document.createElement("li");
+                 li.innerText = "새로운 li";
+                 console.log( li );
+           
+                 var ul = document.querySelector("ul");
+                //  ul.append(li, "123");   //append는 가장뒤에추가하는거 한번추가할때 여러개넣을수잇음
+                 ul.appendChild(li);  //한번에 한개만추가가능
+            }
+            function remove() {    //나자신ㅇ늘 삭제 //리무브차일드는 잘안씀. 내가 삭제하고싶은애랑 그부모까지 찾아야돼서.
+              //내 자신 선택해서 삭제하기
+                var li= document.querySelector("li");
+           
+                //부모 요소 선택해서 삭제하기
+                var ul = document.querySelector("ul");
+                var li2 = document.querySelector("li");
+                ul.removeChild(li2);
+                //    console.log( li.parentElement);
+                // li.remove();
+                // li.parentElement.removeChild(li); //내 부모를찾고 내자식을 지우겠다.li태그의 부모를 찾고.
+                //부모요소.removeChild(자식요소)
+            }
+        </script>
+    </head>
+
+    <body>
+        <img src="./귤.jpg" widhth="100" height="100">
+        <button type="button" onclick="imgChange()">이미지</button>"
+    
+         <ul>
+             <li>이름</li>
+         </ul>
+         <button type="button" onclick="add()">추가</button>
+         <button type="button" onclick="remove()">삭제</button>
+    </body>
+
+
+</html>
