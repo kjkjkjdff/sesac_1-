@@ -14,6 +14,12 @@
             developer: 'graphitte',
             designer: 'leezhce'
         }
+
+        console.group('object loop');
+        for (var name in memberObject) {
+             console.log(name, memberObject[name]);  //name이 key인데 "name"해도 상관없낭..?
+        }
+        console.groupEnd('object loop')
       </script>
     </head>
     <body>
