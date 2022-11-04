@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script>
+                num=0; //전역변수
+         function add() {
+            
+                num=num+1;
+                var date = new Date();
+
+                var table = document.querySelector("table");
+                 var tr = document.createElement("tr");
+                 var td1 = document.createElement("td");
+                 var td2 = document.createElement("td");
+                 var td3 = document.createElement("td");
+                 var td4 = document.createElement("td");
+                 
+                 td1.innerText= num;
+                 td2.innerText = document.getElementById("input1").value;
+                 td3.innerText = input2; //오잉 왜안나오지?
+                 td4.innerText = date;
+
+                 tr.append(td1);
+                 tr.append(td2);
+                 tr.append(td3);
+                 tr.append(td4);
+                 console.log( tr );
+                 table.append(tr);
+                }
+
+         function getdata() {
+                var input1 = document.getElementById("input1").value;
+                var input2 = document.getElementById("input2").value;
+                }
+        </script>  
+
+          
+    </head>
+    <body>
+        <p>방명록입니다..</p>
+    
+        <th>작성자</th>
+        <input type="text" id="input1" > </br> 
+        <th>내용</th>
+        <input type="text" id="input2" style="width: 560px;"> </br>
+
+        <br>
+        <button type="button" onclick="add()">작성</button>
+
+        <table  border="1" cellspacing="2" cellpadding="10" width=30%">
+        <tr>
+            <td>번호</td>
+            <td>작성자</td>
+            <td>내용</td>
+            <td>작성일</td>
+        </tr>
+       
+        </table>
+    </body>
+</html>
