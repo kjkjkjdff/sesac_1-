@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link href="./jquery-ui-1.13.2/jquery-ui.css">
+
+        <style>
+           /* .container {
+            width: 500px;
+            height: 500px;
+            text-align: center;
+           } */
+           .pannel{
+			width: 500px; 
+            height: 500px;
+			margin:auto;
+			border:1px solid #000;
+			text-align:center
+	     	}
+            #img {
+             width: 100%;
+            height: 100%;
+            }
+            button{
+			background: #333;
+			color:#fff;
+			padding:10px;
+			border:none;
+		    }
+        </style>
+
+        <script>
+            function apple() {
+            // document.getElementById("img").src ="사과.jpg";
+            $('#img').attr({"src":"사과.jpg"})
+    }
+        
+            function grape() {
+            $('#img').attr({"src":"포도.jpg"})
+    }
+           
+            function peach() {
+            $('#img').attr({"src":"복숭아.jpg"})  //이렇게 쓰면 여러개 넣을수있음
+    }
+            function banana() {
+            $('#img').attr("src","바나나.jpg");  //이건 한개만 넣을수있음
+    }
+        </script>
+    </head>
+
+
+    <body>
+
+        <div class="pannel">
+            <img id="img" src="하늘.jpg" />
+            <button type="button" onclick="apple()">사과</button>
+            <button type="button" onclick="grape()">포도</button>
+            <button type="button" onclick="peach()">복숭아</button>
+            <button type="button" onclick="banana()">바나나</button>
+
+
+        </div>
+
+
+    </body>
+
+
+</html>

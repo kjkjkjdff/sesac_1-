@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link href="./jquery-ui-1.13.2/jquery-ui.css">
+
+        <style>
+            .div {width: 100px; height:100px; }
+            .apple {}
+
+        </style>
+
+        <script>
+            function second(){
+                $("div").switchClass("div","apple",2000 ); 
+            }
+
+            function append1(){
+                $("#apple").append(img src="사과.jpg" width="70" height="70"); 
+            }
+
+        </script>
+    </head>
+
+
+    <body>
+        <div class="none"> 과일 고르기 </div>
+        <div class="apple">사과<img src="사과.jpg" width="70" height="70"></div>
+        
+        <div id="apple"> <img src="사과.jpg" width="70" height="70">
+        <button type="button" onclick="append1()">요소추가</button>
+        </div>
+        <button type="button" onclick="second()"> 사과 </button>
+
+
+
+    </body>
+
+
+</html>

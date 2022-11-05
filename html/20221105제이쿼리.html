@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script>
+            function getData(){
+                 var value1 = document.getElementById("input1").value;
+                 console.log( value1 );
+             //밑에가 제이쿼리 방법.
+                 var value2 = $("#input1").val();
+                 console.log(value2);
+            }
+            function setData(){
+                // document.getElementById("input1").value="hi"; 밑에거랑 같은거임.밑에는 제이쿼리.인풋아이디를 가진애한테 밸류로 hi를 설정하겟다.
+                $("#input1").val("hello");
+            }
+            function setStyle1(){
+                var p= document.querySelector("#p1");
+                p.style ="background-color:yellow; color; blue;";    //내가가져온 피태그의 스타일을 오른쪽으로 지정하겠다
+            }
+            function setStyle2(){
+                $("#p1").css("background-color","red");
+            }
+            function setStyle3() {
+                $("#p1").attr("style", "background-color: blue; color: white;");
+            }
+            function changeTEXT(){
+               console.log($("#p1").text());
+               $("#p1").text("글자 변경")        //값을 보내면 그걸로변경되고 아니면 값을가져온다.
+            }
+            function changeHTML(){
+                $("#p1").html("<strong>굵은 글자 변경</strong>");
+
+            }
+            function append1(){
+                document.querySelector("#p1").append("<h2>h2</h2>");   //문자로들어감
+                $("#p1").append("<h3>h3태그입니다.</h3>");       //html요소로 입력됨
+            }
+            function append(){
+                // $("#ul").append("<li class='append'>append</li>"); // 자식들중에 제일 끝에추가 
+                $("#ul").append("<li>append</li>"); 
+            }
+            function prepend(){
+                $("#ul").prepend("<li>prepend</li>"); //자식들중에서 가장앞에추가
+            }
+            function before(){
+                $("#li1").before("<li>after<li>"); //내가선택한 형제의 바로 앞형제로 //<li>after<li>얘네가  아이디가 지정안돼있어서 삭제안되는거임
+            }
+            function after(){
+                $("#li1").after("<li>after</li>"); //내 자신을기준으로 뒤에 형제를 추가한다.
+            }
+            function remove1(){
+                $("#li1").remove();
+                   // $("#li1").remove();   //자기 스스로를 삭제.한개만 삭제하는건 아니고. $뒤에들어가는 해당된느것들을 다 삭제함.아이디로 li태그넣어도 모든li태그삭제됨
+                // $(".append").remove();         //append가진애들만 지워짐   
+            }
+            function empty(){
+                $("#ul").empty();   //부모아래모든자식들을 지우겠다 선택된요소의 모든자식들을 지우겠다. 자손포함. ul을 다 비우겠다. 그럼 empty는 아이디없어도 다지움?
+            }
+            function parent(){
+                console.log($("#li1").parent());
+                console.log($("#li1").parent().parent()); //ul의 부모라서 바디가 나옴. 제이쿼리는 계속 연결 가능.
+                console.log($("#li1").parent().prev()); // prev는선택된 요소 바로 이전에 위치한 형제요소 선택
+                console.log($("#li1").parent().next());   //next는 선택된 요소 바로 다음에 위치한 형제요소 선택
+                $("#li1").parent().append("<li>parentAppend<li>"); //자기위부모?선택? 바로위에 존재하는 하나의 부모요소 선택
+            }
+        </script>   
+    </head>
+
+    <body>
+        <button type="button" onclick="parent()">parent</button>
+        <ul id="ul">
+             <li id="li1">기준 li</li>
+        </ul>
+        <button type="button" onclick="remove1()">remove</button>  
+        <button type="button" onclick="empty()">empty</button> 
+         <br> 
+        <button type="button" onclick="append()">append</button>"
+        <button type="button" onclick="prepend()">prepend</button>"
+        <button type="button" onclick="before()">before</button>"
+        <button type="button" onclick="after()">after</button>"
+        <br>
+        <p id="p1">p태그입니다</p>
+        <button type="button" onclick="append1()">요소추가</button>"
+        <br>
+
+        <button type="button" onclick="setStyle1()">javascript로 바꾸기</button>"
+        <button type="button" onclick="setStyle2()">jQuery로 바꾸기</button>
+        <button type="button" onclick="setStyle3()">jquery로 여러개 바꾸기</button>
+        
+        <br>
+        <button type="button" onclick="changeText()">text변경</button>
+        <button type="button" onclick="changeHTML()">html변경</button>
+        <br>
+        <input type="text" id="input1">
+        <button type="button" onclick="getData()">값 가져오기</button>
+        <button type="button" onclick="getData()">값 설정하기</button>
+    </body>
+</html>
