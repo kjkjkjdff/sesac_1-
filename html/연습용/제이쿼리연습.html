@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>제이쿼리 문서객체 선택</title>
+        <script src="jquery-1.12.4.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('input:test').css('border','1px solid red');
+                $('input:password').css('border','1px solid blue');
+            });
+        </script>
+    </head>
+    <body>
+        <form action="#">
+            <input type="text">
+            <hr>
+            <input type="password">
+        </form>
+    </body>
+</html>
