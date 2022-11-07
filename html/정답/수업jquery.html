@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script>
+            function getData() {
+                var value1 = document.getElementById("input1").value;
+                console.log( value1 );
+
+                var value2 = $("#input1").val();
+                console.log( value2 );
+            }
+            function setData() {
+                // document.getElementById("input1").value = "hi";
+                $("#input1").val("hello");
+            }
+            function setStyle1() {
+                var p = document.querySelector("#p1");
+                p.style = "background-color: yellow; color: blue;";
+            }
+            function setStyle2() {
+                $("#p1").css("background-color", "red");
+            }
+            function setStyle3() {
+                $("#p1").attr("style", "background-color: blue; color: white;");
+            }
+            function changeText(){
+                console.log( $("#p1").text() );
+                $("#p1").text("글자 변경")
+            }
+            function changeHTML() {
+                $("#p1").html("<strong>굵은 글자 변경</strong>");
+            }
+            function append1() {
+                document.querySelector("#p1").append("<h2>h2</h2>");
+                $("#p1").append("<h3>h3태그입니다.</h3>");
+            }
+            function append() {
+                $("#ul").append("<li class='append'>append</li>");
+            }
+            function prepend() {
+                $("#ul").prepend("<li>prepend</li>");
+            }
+            function before() {
+                $("#li1").before("<li>before</li>");
+            }
+            function after() {
+                $("#li1").after("<li>after</li>");
+            }
+            function remove1() {
+                $(".append").remove();
+            }
+            function empty() {
+                $("#ul").empty();
+            }
+            function parent() {
+                console.log( $("#li1").parent() );
+                console.log( $("#li1").parent().parent());
+                console.log( $("#li1").parent().prev());
+                console.log( $("#li1").parent().next());
+                $("#li1").parent().append("<li>parentAppend</li>");
+            }
+        </script>
+    </head>
+
+    <body>
+        <button type="button" class="append" onclick="parent()">parent</button>
+        <ul id="ul">
+            <li id="li1">기준 li</li>
+        </ul>
+        <button type="button" onclick="remove1()">remove</button>
+        <button type="button" onclick="empty()">empty</button>
+        <br>
+        <button type="button" onclick="append()">append</button>
+        <button type="button" onclick="prepend()">prepend</button>
+        <button type="button" onclick="before()">before</button>
+        <button type="button" onclick="after()">after</button>
+        <hr>
+        <p id="p1">p태그입니다.</p>
+        <button type="button" onclick="append1()">요소추가</button>
+        <br>
+        <button type="button" onclick="setStyle1()">javascript로 바꾸기</button>
+        <button type="button" onclick="setStyle2()">jQUery로 바꾸기</button>
+        <button type="button" onclick="setStyle3()">jQUery로 여러개 바꾸기</button>
+        <br>
+        <button type="button" onclick="changeText()">text 변경</button>
+        <button type="button" onclick="changeHTML()">html 변경</button>
+        <hr>
+        <input type="text" id="input1">
+        <button type="button" onclick="getData()">값 가져오기</button>
+        <button type="button" onclick="setData()">값 설정하기</button>
+    </body>
+</html>

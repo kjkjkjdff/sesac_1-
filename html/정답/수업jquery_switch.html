@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> 
+        <script src="./jquery-ui-1.13.2/jquery-ui.js"></script>
+        <link href="./jquery-ui-1.13.2/jquery-ui.css">
+        <style>
+            div { width: 100px; height: 100px; }
+            .first { background-color: red; }
+            .second { background-color: yellow; }
+            .third { background-color: green; }
+            .sizeup { font-size: 30px; }
+        </style>
+        <script>
+            function second() {
+                $("div").switchClass("first", "second", 2000);
+            }
+            function sizeup() {
+                $("div").switchClass("second", "sizeup", 1000 );
+            }
+            function third() {
+                $("div").switchClass("sizeup", "third");
+            }
+            function first() {
+                $("div").switchClass("third", "first");
+            }
+        </script>
+    </head>
+
+    <body>
+        <div>div</div>
+        <button type="button" onclick="second()">first -> second</button>
+        <button type="button" onclick="sizeup()">second -> sizeup</button>
+        <button type="button" onclick="third()">sizeup -> third</button>
+        <button type="button" onclick="first()">third -> first</button>
+    </body>
+</html>
