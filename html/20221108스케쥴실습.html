@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    </head>
+      <script>
+
+
+        //  function getData1(){
+               
+        //        var value1= $("#input1").val("td");
+        //     }
+
+        //  function getData2(){
+                 
+        //          var value3 = $("#result").val();
+        //          console.log(value3);
+        //          value3.innerText = "input2.value"
+        //     }
+
+        
+         
+        // $("td").on("click", function(){
+        //     console.log(this);
+        //     console.log($(this).text());
+        //  });
+
+        //  $("#input1").mouseover(function(){
+        //     console.log("input1 mouseover");
+        // }); 
+      </script>
+      <style>
+        td {
+            width: 100px;
+            height: 100px;
+        }
+        tr > td:first-child > p,
+        tr > th:first-child > p {
+            color: red
+        }
+        tr > td:last-child > p,
+        tr > th:last-child > p {
+            color: blue;
+        }
+        td > p:hover {
+            transform: scale(1.2);
+            cursor:pointer;
+        }
+      </style>
+
+    <body>
+        <br>
+        날짜:
+        <input type="text" id="input1">
+        <br>
+        내용:
+        <input type="text" id="input2">
+        <br>
+        <button type="button" id="result" onclick="getData2()">작성</button>
+
+        <div style="text-align:center; color:green; width: 550px">2022년 7월</div>
+        <table cellpadding="10" width="50%">
+    
+            <tr>
+                <td><div style="color:red;">日</div></td>
+                <td><p>月</p></td>
+                <td><p>火</p></td>
+                <td<p>水</p></td>
+                <td><p>木</p></td>
+                <td><p>金</p></td>
+                <td><div style="color:blue;">土</div></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><p>1</p></td>
+                <td><div style="color:blue;">2</div></td>
+            </tr>
+            <tr>
+                <td><div style="color:red;">3</div></td>
+                <td><p>4</p></td>
+                <td><p>5</p></td>
+                <td><p>6</p></td>
+                <td><div style="color:red;">7</div></td>
+                <td><p>8</p></td>
+                <td><div style="color:blue;">9</div></td>
+            </tr>
+            <tr>
+                <td><div style="color:red;">10</div></td>
+                <td><p>11</p></td>
+                <td><p>12</p></td>
+                <td><p>13</p></td>
+                <td><p>14</p></td>
+                <td><p>15</p></td>
+                <td><div style="color:blue;">16</div></td>
+            </tr>
+            <tr>
+                <td><div style="color:red;">17</div></td>
+                <td><p>18</p></td>
+                <td><p>19</p></td>
+                <td><p>20</p></td>
+                <td><p>21</p></td>
+                <td><p>22</p></td>
+                <td><div style="color:blue;">23</div></td>
+            </tr>
+            <tr>
+                <td><div style="color:red;">24</div></td>
+                <td><p>25</p></td>
+                <td><p>26</p></td>
+                <td><p>27</p></td>
+                <td><p>28</p></td>
+                <td><p>29</p></td>
+                <td><div style="color:blue;">30</div></td>
+            </tr>
+            <tr>
+                <td><div style="color:red;">31</div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <script>
+
+            var target; //전역변수 여러함수에서 공통으로 사용가능
+            
+            $("td").on("click", function( obj ){     //td라는 태그선택자에 이벤트를 등록함 
+                target = obj.currentTarget; //=이게 td를 가리키는건데 이걸 this라고 함  //타겟을 이벤트밖에서 선언함 지역변수임. 함수안에서 타겟을선언하면 그안에서만 사용가능함. 타겟의 생명주기는 중괄호가 닫히기전까짐. 밖에서 선언하면 전역변수라서 어디서든 사용가능. 다른함수에서도 사용가능.
+                console.log( target );
+                console.log( obj);   //읭?이건머임 4시쯤.
+                console.log( obj.currentTarget); //어떤td에 이벤트가 발생했는가
+                console.log(obj.currentTarget.children); //자식을 선택 자식이 한개든몇개든 리스트로 가져옴 있든없든. 
+                console.log(obj.currentTarget.children[0]); //가장처음있는자식을 데려와라.
+                $("#input1").val($(obj.currentTarget.children[0]).text()); //첫번째자식에있는 피태그의 글자를 가져와라. 데이트인풋창에 그 글자가 들어간다. val안에있는걸 date안에 넣는다! obj.currentTarget은 td고 obj.currentTarget.children은 자식태그인p태그.중에서 첫번째. 그 텍스트를 데이트에넣어라
+            });
+            function getData2(){
+                // // target = obj.currentTarget; 
+                // // console.log(target);
+                // // // $("#content").val($());
+                // // $(obj.currentTarget.children[0].text()).val($("#content"));
+                // $("#contet").attr("<p>","<p>+#content");
+                console.log( target);    //3을 누르고 작성을눌럿을때 3의 td태그가 들어온다.
+                var input2 = $("#input2").val();
+                
+                //자식요소가 하나라는거는 td안에 p태그가 하나다
+                if ( target.children.lenght >1 ) { //내가선택한 td태그의자식에 p태그가 1보다많다면
+                    var div = target.children[1];
+                    div.innerText =input2;       //덮어씌어진다(?) 
+                }  else {
+
+                var div = document.createElement("div");
+                div.innerText = input2;
+                $(target).append(div);    //앞서선택한 td태그에 자식으로 추가함.div가 자식으로 추가됨
+               }
+            }
+
+
+        </script>
+    </body>
+
+</html>
+        

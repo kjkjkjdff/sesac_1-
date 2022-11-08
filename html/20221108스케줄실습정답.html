@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+        <title> 내 스케줄 </title>
+
+        <style>
+            td {
+                width: 100px;
+                height: 100px;
+            }
+            tr > td:first-child > p,
+            tr > th:first-child > p {
+                color: red
+            }
+            tr > td:last-child > p,
+            tr > th:last-child > p {
+                color: blue;
+            }
+            td > p:hover {
+                transform: scale(1.2);
+                cursor:pointer;
+            }
+        </style>
+    </head>
+
+    <body > 
+        <div>
+            날짜 : <input type="text" id="date" readonly> <br>
+            내용 : <input type="text" id="content"> <br>
+            <button type="button" onclick="writeSchedule();">작성</button> <br>
+        </div> 
+        <div style="font-size:2em; color:green; text-align:center;">
+            2022년 7월        
+        </div> 
+
+        <br>
+        
+        <table align="center" width=500 style="text-align:center;">
+            <tr>
+                <th>日</th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
+            </tr>
+            <tr>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p>1</p></td>
+                <td><p>2</p></td>
+            <tr>
+                <td><p>3</p></td>
+                <td><p>4</p></td>
+                <td><p>5</p></td>
+                <td><p>6</p></td>
+                <td><p>7</p></td>
+                <td><p>8</p></td>
+                <td><p>9</p></td>
+            </tr>
+            <tr>
+                <td><p>10</p></td>
+                <td><p>11</p></td>
+                <td><p>12</p></td>
+                <td><p>13</p></td>
+                <td><p>14</p></td>
+                <td><p>15</p></td>
+                <td><p>16</p></td>
+            </tr>
+            <tr>
+                <td><p>17</p></td>
+                <td><p>18</p></td>
+                <td><p>19</p></td>
+                <td><p>20</p></td>
+                <td><p>21</p></td>
+                <td><p>22</p></td>
+                <td><p>23</p></td>
+            </tr>
+            <tr>
+                <td><p>24</p></td>
+                <td><p>25</p></td>
+                <td><p>26</p></td>
+                <td><p>27</p></td>
+                <td><p>28</p></td>
+                <td><p>29</p></td>
+                <td><p>30</p></td>
+            </tr>
+            <tr>
+                <td><p>31</p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+                <td><p></p></td>
+            </tr>
+        </table>
+
+        <script>
+            var target; //전역변수 여러함수에서 공통으로 사용가능
+            
+            $("td").on("click", function( obj ){     //td라는 태그선택자에 이벤트를 등록함 
+                target = obj.currentTarget; //=이게 td를 가리키는건데 이걸 this라고 함  //타겟을 이벤트밖에서 선언함 지역변수임. 함수안에서 타겟을선언하면 그안에서만 사용가능함. 타겟의 생명주기는 중괄호가 닫히기전까짐. 밖에서 선언하면 전역변수라서 어디서든 사용가능. 다른함수에서도 사용가능.
+                console.log( target );
+                console.log( obj);   //읭?이건머임 4시쯤.
+                console.log( obj.currentTarget); //어떤td에 이벤트가 발생했는가
+                console.log(obj.currentTarget.children); //자식을 선택 자식이 한개든몇개든 리스트로 가져옴 있든없든. 
+                console.log(obj.currentTarget.children[0]); //가장처음있는자식을 데려와라.
+                $("#date").val($(obj.currentTarget.children[0]).text()); //첫번째자식에있는 피태그의 글자를 가져와라. 데이트인풋창에 그 글자가 들어간다. val안에있는걸 date안에 넣는다! obj.currentTarget은 td고 obj.currentTarget.children은 자식태그인p태그.중에서 첫번째. 그 텍스트를 데이트에넣어라
+            });
+            function writeSchedule(){
+                // // target = obj.currentTarget; 
+                // // console.log(target);
+                // // // $("#content").val($());
+                // // $(obj.currentTarget.children[0].text()).val($("#content"));
+                // $("#contet").attr("<p>","<p>+#content");
+                console.log( target);    //3을 누르고 작성을눌럿을때 3의 td태그가 들어온다.
+                var content = $("#content").val();
+                
+                //자식요소가 하나라는거는 td안에 p태그가 하나다
+                if ( target.children.lenght >1 ) { //내가선택한 td태그의자식에 p태그가 1보다많다면
+                    var div = target.children[1];
+                    div.innerText =content;       //덮어씌어진다(?) 
+                }  else {
+
+                var div = document.createElement("div");
+                div.innerText = content;
+                $(target).append(div);    //앞서선택한 td태그에 자식으로 추가함.div가 자식으로 추가됨
+               }
+            }
+
+               //맨첨엔 작성누르면 else의 함수가 실행돼서 div의 이너텍스트(안에있는거에) 컨텐트내용을 넣는다가 실행되는데 또 같은날짜에 작성을 누르면 if함수가 실행돼서 td태그의 자식이 2면 (기존추가된내용이 있다는거니까target.children[1]이 기존추가된내용이니까 그 디브의 이너텍스트내용을 새로입력한 컨텐트의 내용으로 대체한다!
+               
+        </script>
+    </body>
+</html>

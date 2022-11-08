@@ -1,0 +1,76 @@
+<html>
+   <head>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    
+   </head>
+   <body>
+       body태그
+       <input type="text" id="input1">
+       <p id="alert"></p>
+       <div style="width: 100px; height: 500px; background-color:yellow;" id="div1"></div>
+      <script>
+        //키보드 이벤트
+        $("#input1").keydown(function(e){
+            console.log("keydown: ", e.currentTarget.value);
+            $("#alert").text("글자가 입력됨,"+e.currentTarget.value); //입력창에 입력되는 밸류를 가져온다. 0을 적으면 키다운 프레스순으로 발생함. 키다운상태에서의 인풋을 보면, 아직 0이 적히기전이다. 키다운은 아직 글자가 나오기전이라서. 입력창의 밸류를 키다운상태에서 가져오라했어서 입력했지만 나오지않음.
+            console.log("input keydown"); //키를내렷다 0을 누르고 아직 창에 반영되지않았을때는 키다운. 인풋창에 반영됐을때는 프레스. 지우는거는 입력창에 반영안돼서 프레스안뜸. 다운이먼저고 그담이 프레스임. 사용가능한아이디입니다 이런거 인풋창에 입력할때마다 뜨게하는건데 프레스로하면 아이디썻다가지우면 사용가능한아이디그거에반ㅇ영이안되는상태
+            console.log(e); //어떤정보가나오는지 보여줌 keyCode는 원하는키를 설정할수있음 숫자로 변형돼서 들어감 키다운이벤트발생할때 키보드 객체가 e라는 변수로 들어오는데 이 객체엔 많은 정보들이있는데특정하게 어떤키라는거는 키코드라는 속성으로 들어온다.13은 엔터. 콘솔에 나오게만들수있음.
+            if( e.keyCode == 13 ){
+                console.log("enter key");
+            }
+        });
+        $("#input1").keyup(function(e){
+            console.log("keyup: ", e.currentTarget.value);
+            // console.log("input keyup"); //키를올렷다
+        });
+        $("#input1").keypress(function(e){
+            console.log("keypress: ", e.currentTarget.value);
+            console.log("input keypress"); 
+        });  
+
+        //마우스 이벤트 아이디가 디브1인친구한테 마우스가클릭되엇을때 동작을걸겟다. 그때 저 함수가 실행된다 e는 이벤트객체.파라먼트임. 이벤트가 발생했을때 이벤트객체라는걸 던져주는데 e말고 다른걸로 바꿔도 되긴하는데  콘솔에 currentTarget: div#div1등등 정보나옴.사용하지않을거면 굳이 이 객체 안받아도됨
+        $("#div1").click(function(e){
+            console.log("div click"); 
+            console.log("e: ",e);
+        });
+    //    //$("td")on.("click", function(){
+    //     console.log(this);
+    //     console.log($(this).text()); this는 이벤트가 발생한 자기자신 td를 의미함.
+    //    });클릭하고비슷한데 on은 등록을하겟다는 뜻
+
+        $("#div1").mouseover(function(){
+            console.log("div mouseover");
+        }); 
+        //내가 특정한거에 마우스올렷을때 발생하는 이벤트 .올렷을때만감지.
+        $("#div1").hover(function(){
+            console.log("div hover");
+        }, function(){
+            console.log("div hover2");
+        });
+
+
+        //마우스오버랑 차이점은,호버는 마우스 땔때도 감지. 올릴때도감지. 올리고뗏을때 다르게 동작하고 싶다면 두개함수를 보내면된다.
+        $(window).scroll(function(){
+            console.log("window scroll");
+        });
+        //윈도우는 브라우저창을의미. 스크롤이벤트가 발생하면 함수가 실행된다 특정게시판에만 스크롤을 걸수있다!
+
+        //   $(document).ready(function(){ 
+        //       alert("document.ready");
+        //   });  바디태그가 나오기전에 먼저실행됨 위에거랑 밑에거 같은거임!로딩이벤트.어떤정보를 보여줘야할때 백엔드에서 정보를가져와야되면 여기 이벤트에 그 내용을 넣는거임
+        //로딩이벤트  
+        $(function(){
+             alert("ready")
+          });
+      </script>
+
+   </body>
+       
+</html>
+
+<!-- 1.'0'이라는 숫자를 입력한다 해보자.
+2.사람이 손으로 키보드는 눌렀는데, 아직 글자가 나오기 전->keydown
+3.실제 글자가 나올때->keypress  html의 입력창
+4.키보드에서 손을 뗀다->keyup--세개순서로 이벤트가 발생한다
+
+이제 2021년부터는 keydown->(keypress)->keyup순서로 됨  키프레스는 잊어라!!!>
