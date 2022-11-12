@@ -1,97 +1,123 @@
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>홈페이지 만들기</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    
-    
-    <style>
-      div {  font-weight:bold; 
-      }
-      /* .nav-item{
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>홈페이지 만들기</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
+  <style>
+    div {
+      font-weight: bold;
+    }
+
+    /* .nav-item{
        text-align: center;
       }
         */
-        .navbar{
-          
-        }
-        .navbar-collapse{
-          flex-grow: 0;
-        }                        
-        a { text-decoration:none !important; color:black; font-weight: normal; }     
-        a:hover { text-decoration:none !important; color:red;}
-        #background { width: 1000px; height:1000px; color:grey;
-      }
-      
-    
-     </style>  
- </head>
+    .navbar {}
 
-  <body>
-    <br>
+    .navbar-collapse {
+      flex-grow: 0;
+    }
 
-    <div class="d-flex justify-content-center" style="height:100px;">
-       <!-- 내가 중앙에 옮기고 싶은거 위에다가 justify-content-center -->
-       <a href="">
-        <img class=" ls-is-cached lazyloaded" src="./11번가.jpg" style="height:100%"></a>
-        
-        <form class="d-flex align-items-center" role="search" style="margin: 0px;" > 
-            <!-- 한줄로만들기기능 -->
-              <input class="form-control" type="search" style= "width:300px" placeholder="Search" aria-label="Search" >
-              <button class="btn btn-outline-danger" type="submit"  >Search</button>
-         </form>
+    a {
+      text-decoration: none !important;
+      color: black;
+      font-weight: normal;
+    }
 
-    </div>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid d-flex justify-content-center" style="background-color:white" >
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          <a class="navbar-brand" href="" > 
-            <!-- href=""로 비워두면 새로고침됨 href="#"은 제자리.안움직이겠다 -->
-           슈팅배송</a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-              <li class="nav-item">
-                <a class="nav-link active  " aria-current="page" href="#">
-                    쇼킹딜</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" >
-                    쿠폰기획전</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                    아마존베스트</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               장보기 </a>
-                  
-               
-                <ul class="dropdown-menu ">
-                  <li><a class="dropdown-item" href="#">식품</a></li>
-                  <li><a class="dropdown-item" href="#">뷰티</a></li>
-                  <li><a class="dropdown-item" href="#">가구/인테리어</a></li>
-                  <li><a class="dropdown-item" href="#">생활/건강</a></li>
-                  <li><a class="dropdown-item" href="#">도서/취미/펫</a></li>
-                  <li><a class="dropdown-item" href="#">여행/티켓</a></li>
-                  <li><a class="dropdown-item" href="#">해외직구</a></li>
-                </ul>
-              
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="#" >로그인</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#">회원가입</a> 
-                <!-- position-absolute bottom-20 end-0 -->
-              </li>
+    #sub_menu a:hover {
+      text-decoration: none !important;
+      color: red;
+    }
+
+    #background {
+      width: 1000px;
+      height: 1000px;
+      color: grey;
+    }
+
+    .col {
+      display: flex;
+    }
+
+    #link_menu a:hover {
+      text-decoration: none;
+      color: black;
+      box-shadow: 0 0 0 1px;
+    }
+
+    #link_menu img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <br />
+
+  <div class="d-flex justify-content-center" style="height: 100px">
+    <!-- 내가 중앙에 옮기고 싶은거 위에다가 justify-content-center -->
+    <a href="">
+      <img class="ls-is-cached lazyloaded" src="./11번가.jpg" style="height: 100%" /></a>
+
+    <form class="d-flex align-items-center" role="search" style="margin: 0px">
+      <!-- 한줄로만들기기능 -->
+      <input class="form-control" type="search" style="width: 300px" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-danger" type="submit">Search</button>
+    </form>
+  </div>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid d-flex justify-content-center" style="background-color: white">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="">
+        <!-- href=""로 비워두면 새로고침됨 href="#"은 제자리.안움직이겠다 -->
+        슈팅배송
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              쇼킹딜</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> 쿠폰기획전</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> 아마존베스트</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              장보기
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">식품</a></li>
+              <li><a class="dropdown-item" href="#">뷰티</a></li>
+              <li><a class="dropdown-item" href="#">가구/인테리어</a></li>
+              <li><a class="dropdown-item" href="#">생활/건강</a></li>
+              <li><a class="dropdown-item" href="#">도서/취미/펫</a></li>
+              <li><a class="dropdown-item" href="#">여행/티켓</a></li>
+              <li><a class="dropdown-item" href="#">해외직구</a></li>
             </ul>
-            <!-- <ul class="nav justify-content-end">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">로그인</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">회원가입</a>
+            <!-- position-absolute bottom-20 end-0 -->
+          </li>
+        </ul>
+        <!-- <ul class="nav justify-content-end">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">로그인</a>
               </li>
@@ -100,99 +126,125 @@
               </li>
              
             </ul> -->
-
-          </div>
-        </div>
-      </nav>
-
-    
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="./이미지1.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5></h5>
-              <p></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./이미지2.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5></h5>
-              <p></p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./이미지3.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5></h5>
-              <p></p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
-    
-      <br>
-    <div class="d-flex justify-content-center" style="padding-bottom: 20px;"> 
-      
-      <a href="https://promo.11st.co.kr/view/p/20221101-festival#drCoupon" style="text-align:center"><img src="./십일절.jpeg" width="80" height="80" title="매일할인쿠폰" > <br><br>매일할인쿠폰</a>
-      
-      <a href="https://promo.11st.co.kr/view/p/20220401-challenge" style="text-align:center" ><img src="./출첵.jpeg" width="80" height="80" title="매일츨첵" ><br><br>매일출첵</a>
-     
-      <a href="https://promo.11st.co.kr/view/p/20221101-rankingshow" style="text-align:center"><img src="./랭킹쇼.jpeg" width="80" height="80" title="랭킹쇼" ><br><br>랭킹쇼</a>
-      <a href="https://promo.11st.co.kr/view/p/20221101-amazingdeal" style="text-align:center"><img src="./어메이징딜.jpeg" width="80" height="80" title="어메이징딜" ><br><br>어메이징딜</a>
-      <a href="https://plan.11st.co.kr/plan/front/exhibitions/2128869/detail" style="text-align:center"><img src="./예약구매.jpeg" width="80" height="80" title="예약구매" ><br><br>예약구매</a>
     </div>
-    <div style="height: 200px; background-color:#e9ecef; margin:0;" id="div1"></div>
+  </nav>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4" style="max-width: 1240px; margin: auto;"> 
-      
-      <div class="col">
-        <div class="card h-100">
-          <img src="햄버거.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">버거킹 통새우와퍼 주니어</h5>
-            <p class="card-text"> 6900원</p>
-          </div>
-          
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./이미지1.jpeg" class="d-block w-100" alt="..." />
+        <div class="carousel-caption d-none d-md-block">
+          <h5></h5>
+          <p></p>
         </div>
       </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="옷.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">젬마월드 30% 빅세일!</h5>
-            <p class="card-text">1700원~</p>
-          </div>
-         
+      <div class="carousel-item">
+        <img src="./이미지2.jpeg" class="d-block w-100" alt="..." />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>
+
+
+          </h5>
+          <p></p>
         </div>
       </div>
-      <div class="col">
-        <div class="card h-100">
-          <img src="가방.jpeg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">NCPICKS 코치/마크제이콥스/토리</h5>
-            <p class="card-text">44,180원</p>
-          </div>
-         
+      <div class="carousel-item">
+        <img src="./이미지3.jpeg" class="d-block w-100" alt="..." />
+        <div class="carousel-caption d-none d-md-block">
+          <h5></h5>
+          <p></p>
         </div>
       </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
-  </body>
+  <br />
+  <div class="d-flex justify-content-center" style="padding-bottom: 20px" id="sub_menu">
+    <a href="https://promo.11st.co.kr/view/p/20221101-festival#drCoupon" style="text-align: center"><img
+        src="./십일절.jpeg" width="80" height="80" title="매일할인쿠폰" />
+      <br /><br />매일할인쿠폰</a>
+
+    <a href="https://promo.11st.co.kr/view/p/20220401-challenge" style="text-align: center"><img src="./출첵.jpeg"
+        width="80" height="80" title="매일츨첵" /><br /><br />매일출첵</a>
+
+    <a href="https://promo.11st.co.kr/view/p/20221101-rankingshow" style="text-align: center"><img src="./랭킹쇼.jpeg"
+        width="80" height="80" title="랭킹쇼" /><br /><br />랭킹쇼</a>
+    <a href="https://promo.11st.co.kr/view/p/20221101-amazingdeal" style="text-align: center"><img src="./어메이징딜.jpeg"
+        width="80" height="80" title="어메이징딜" /><br /><br />어메이징딜</a>
+    <a href="https://plan.11st.co.kr/plan/front/exhibitions/2128869/detail" style="text-align: center"><img
+        src="./예약구매.jpeg" width="80" height="80" title="예약구매" /><br /><br />예약구매</a>
+  </div>
+
+  <!-- <div class="d-flex justify-content-center" style="height: 500px; background-color:#e9ecef; margin:0; ">  -->
+
+  <div class="d-flex" style="
+        height: 500px;
+        background-color: #e9ecef;
+        margin: 0;
+        justify-content: center;
+      ">
+    <!-- 직접주려면  <div style="display:flex; height: 500px; background-color:#e9ecef; margin:0; justify-content:center;" > 이렇게.원래 직접줄땐 스타일에 주는거고 클래스뒤에 d-flex쓴거는 부트스트랩에서 정해진거라서 -->
+
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="max-width: 1240px; margin: auto" id="link_menu">
+      <a href="https://promo.11st.co.kr/view/p/20221101-festival#drCoupon">
+        <div class="col">
+          <div class="card">
+            <div class="w-100 d-flex justify-content-center align-item-center h-100">
+              <img src="햄버거.jpeg" class="card-img-top" style="width:80%" alt="..." />
+
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">버거킹 통새우와퍼 주니어</h5>
+              <p class="card-text">6900원</p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://promo.11st.co.kr/view/p/20221101-festival#drCoupon">
+        <div class="col">
+          <div class="card h-100">
+            <img src="옷.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">젬마월드 30% 빅세일!</h5>
+              <p class="card-text">1700원~</p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://promo.11st.co.kr/view/p/20221101-festival#drCoupon">
+        <div class="col">
+          <div class="card h-100">
+            <img src="가방.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">NCPICKS 코치/마크제이콥스/토리</h5>
+              <p class="card-text">44,180원</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+
 </html>
 
 <!-- style="max-width: 1240px; margin: auto;"주면 마진오토주면 양쪽에 자동으로 마진생겨서 가운데로 정렬됨!!
