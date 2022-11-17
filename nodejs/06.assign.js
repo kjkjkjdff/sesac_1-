@@ -58,7 +58,7 @@ let { one: o } = a;
 
 console.log( o );
 
-//let {one } =a; console.log(o); 원을 넣고싶은데  원을 o라고 다르게부르고싶어서 저렇게 지정해서 콘솔로그에 1값을 나오게하는?
+//let {one } =a; console.log(o); 원을 넣고싶은데  원을 o라고 다르게부르고싶어서 저렇게 지정해서 콘솔로그에 1값을 나오게하는?ㅇㅇ
 let kim = {
     name: 'kimkim'
 }
