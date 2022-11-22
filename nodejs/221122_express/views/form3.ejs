@@ -9,7 +9,7 @@
 
 <body>
 
-    <form action="/Form3" method="get" name="getform2">
+    <form action="/Form3" method="post" name="getform2">
 
         이름<input type="text" name="id" required>
 
@@ -53,27 +53,28 @@
             <input type="checkbox" name="interst" value="패션" />패션
             <input type="checkbox" name="interst" value="음식" />음식
         </fieldset>
+        <fieldset>
+            <legend>선택</legend>
+            <p></p>
 
+            <div>
+                <input type="color" id="head" name="head" value="#e66465">
+                <label for="head">좋아하는 색상</label>
+            </div>
+
+            <div>
+                <input type="text" name="id" required>좋아하는 숫자
+            </div>
+
+
+        </fieldset>
         <button type="submit">회원가입</button>
+
     </form>
-    <fieldset>
-        <legend>선택</legend>
-        <p>Choose your monster's colors:</p>
 
-        <div>
-            <input type="color" id="head" name="head" value="#e66465">
-            <label for="head">Head</label>
-        </div>
-
-        <div>
-            <input type="color" id="body" name="body" value="#f6b73c">
-            <label for="body">Body</label>
-        </div>
-
-
-        <script>
-            console.log(document.forms["getform"])
-        </script>
+    <script>
+        console.log(document.forms["getform"])
+    </script>
 </body>
 
 </html>

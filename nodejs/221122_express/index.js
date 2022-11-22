@@ -89,14 +89,14 @@ app.get("/getForm2", (req, res) => {
 // 위에두개를꼭 짝으로만들어야되는건아닌데, form2파일에 action으로 설정했으니까 무슨값을받겟다 실행하겠다는뜻이니까 밑에줄(결과물나오는화면)도 만드는거임
 
 app.get("/postForm2", (req, res) => {
-    res.render("postform");
+    res.render("form3");
 })
 app.post("/Form3", (req, res) => {
-    console.log(req.query);
+    console.log(req.body);
     res.send("post 요청 성공!");
 })
 
-
+// 첨엔 주소타고들어가야돼서 get으로 만들어야됨 포스트요청하더라도. 
 app.listen(port, () => {
     console.log("server open :", port);
 })
