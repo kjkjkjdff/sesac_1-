@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <%-include("nabar.ejs")%>
+        ejs파일로 만든 html
+        <img src="/static/img/cat.jpg" />
+
+        <!-- <% for(var i=0; i<5; i++) { %>
+            <div>안녕<%=i+1%>
+            </div>
+            <% } %> -->
+
+        <% for(var i=0; i<data.length; i++) { %>
+            <div>안녕<%=data[i]%>
+            </div>
+            <% } %>
+
+                <div style="color:red;">
+                    <%="<span style='color:blue'>안녕</span>"%>하세요
+                </div>
+                <div style="color:red;">
+                    <%-"<span style='color:blue'>안녕</span>"%>하세요
+                </div>
+
+                <%-include("test.ejs")%>
+                    <%-include("test.ejs")%>
+                        <!-- <% if(true) { %>
+                 <% } else if(true) {%>
+                 <% } else { %>
+                <% } %>
+                            <script>
+                                for (var i = 0; i < 5; i++) {
+                                    console.log("a")
+                                }
+
+                                if () {
+
+                                }
+                                else if{
+
+                                }
+                            </script> -->
+</body>
+
+</html>
+
+<!-- <$-inclue("test.ejs")%> test.ejs는 상대경로 적어주면됨. 같은 폴더내에있어서. 만약에 views밑에 테스트폴더만들고 test.ejs를 만들었다면
+("/test/test.ejs")라고쓰면됨  -->
+<!--  i<data.length 렝스는 3개 -->

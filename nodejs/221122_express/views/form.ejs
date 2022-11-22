@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>get 요청</h3>
+    <form action="/getForm" method="get" name="getform">
+        <input type="text" name="id" value="aaa" readonly>
+        <input type="password" name="pw" placeholder="비밀번호">
+
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" name="gender" value="남자" id="men">
+            <label for="men">남자</label>
+            <input type="radio" name="gender" value="여자"> 여자
+
+        </fieldset>
+
+        <fieldset>
+            <legend>취미</legend>
+            <input type="checkbox" name="interst" value="넷플보기" />넷플보기
+            <input type="checkbox" name="interst" value="음악감상" />음악감상
+            <input type="checkbox" name="interst" value="운동" />운동
+        </fieldset>
+
+        <button type="submit">제출</button>
+    </form>
+
+    <h3>post 요청</h3>
+    <form action="/postForm" method="post">
+        <input type="text" name="id" required>
+        <input type="password" name="pw">
+
+        <select name="birthMonth">
+            <% for(var i=1; i<=12; i++) {%>
+                <option value="<%=i%>">
+                    <%=i%>월
+                </option>
+                <% } %>
+                    <!-- <option>2</option>
+            <option>3</option> -->
+        </select>
+
+        <textarea name="content" rows="30" cols="50" required></textarea>
+        <button type=" submit">제출</button>
+    </form>
+
+    <script>
+        console.log(document.forms["getform"])
+    </script>
+</body>
+
+</html>
+
+<!-- action은url을 의미 // 어디로 보낼건지를 액션에 적는거임. 우리가 만들어둔 라우터를 (폼을 전송할 주소를
+    액션에적는다.) getForm이라는 주소를 서버측에서 만들었다는 뜻임.)method에는 겟이나 포스트. 
+폼을 겟으로 적게되면 정보가 url에노출됨. 포스트는 내가 어떤정보를보냈는지 url에서 알수없음. 보안상 더 좋다 name은원하는거 적기
+네임적으면 스크립트태그에서 저 폼을 선택할수있음
+인풋태그안에있는 네임은 필수요소임 input type="password"이건 버튼타입으로 패스워드형식으로 input type="text"이건 텍스트형식으로 받는다. 
+포스트요청에서는 네임이 필수가아님.
+
+radio타입의 한묶음 기준은 name임. name이 같은것들중에서 하나만 고를수있음.<input type="radio" />음악감상 
+체크박스는 여러개 체크 가능 터미널에 { id: 'aaa', pw: '1234', gender: '여자', interst: [ '넷플보기', '음악감상' ] }
+이렇게 나온다...
+
+<input type="radio" name="gender" value="여자"> 여자
+ 밸류값줘서 서버로 받을때 무슨값이 들어왔는지 확인하는거임
+
+<textarea name="content" rows="30" cols="50"></textarea>
+row세로 cols가로 줄 수 지정
+인풋할때 name이 키값이될거라서 중요함 
+<input type="text" name="id" readonly> 라고readonly적으면 값을바꿀수가없고 읽기만가능 input에도 value값을
+박아둘수이썽서 고정시키고 싶은 단어가있을때 미리 지정해놓는거임.클라이언트가 절대안바꿧음 좋겠는값.
+
+select엔 네임 옵션엔 밸류
+
+ <input type="radio" name="gender" value="남자" id="men">
+        <label for="men">남자</label> 이건 글자 클릭햇을때도 체크가능하도록되는거임. 여자는 라벨 id를 women으로 하고 인풋타입에도 id넣어주면됨-->

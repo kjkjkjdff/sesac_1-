@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="/Form3" method="get" name="getform2">
+
+        이름<input type="text" name="id" required>
+
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" name="gender" value="남자" id="men" required>
+            <label for="men">남자</label>
+            <input type="radio" name="gender" value="여자" required> 여자
+
+        </fieldset>
+        <fieldset>
+            <select name="birthYear">
+                <% for(var i=1; i<=2023; i++) {%>
+                    <option value="<%=i%>">
+                        <%=i%>년
+                    </option>
+                    <% } %>
+
+            </select>
+            <select name="birthmonth">
+                <% for(var i=1; i<=12; i++) {%>
+                    <option value="<%=i%>">
+                        <%=i%>월
+                    </option>
+                    <% } %>
+
+            </select>
+            <select name="birthday">
+                <% for(var i=1; i<=31; i++) {%>
+                    <option value="<%=i%>">
+                        <%=i%>일
+                    </option>
+                    <% } %>
+
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="interst" value="여행" />여행
+            <input type="checkbox" name="interst" value="패션" />패션
+            <input type="checkbox" name="interst" value="음식" />음식
+        </fieldset>
+
+        <button type="submit">회원가입</button>
+    </form>
+    <fieldset>
+        <legend>선택</legend>
+        <p>Choose your monster's colors:</p>
+
+        <div>
+            <input type="color" id="head" name="head" value="#e66465">
+            <label for="head">Head</label>
+        </div>
+
+        <div>
+            <input type="color" id="body" name="body" value="#f6b73c">
+            <label for="body">Body</label>
+        </div>
+
+
+        <script>
+            console.log(document.forms["getform"])
+        </script>
+</body>
+
+</html>
