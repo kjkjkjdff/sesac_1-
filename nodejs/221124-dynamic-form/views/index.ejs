@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function sendGet(){ // axios get을 이용한 통신
+                var form =document.getElementById("form_info");
+                // 폼태그에서 원하는거 가져오는법
+                // form.name.value 라고 원하는값가져올수있음. 이건 폼태그에서만가능. 내가원하는 폼태그에서 네임속성이 네임인 속성을가져오겠다
+                // form.age.value 내가원하는 폼태그에서 에이지인 속성을가져오겠다/ 폼에서는 네임속성을 지정하고 스크립태트개으세 어떤네임인지 form.age.value처럼
+                // 적어서 네임속성을 가져올수있따 
+               
+                axios({
+                    method: "get",
+                    url: "/form", 
+                    // params:{ name: "codingon"}
+                    params:{ name: form.name.value}
+                }).then(function(res){
+                    console.log(res);
+                    alert(res.data);
+                    // res.data={msg:~~~}니까 alert(res.data.msg);라고 키까지 적어줘야됨. 
+                });
+                // 엑시오스함수실행 url 뒤에있는게 폼에서의 액션경로임.내가보낼 주소.   method:get은 어디로 보내겠다는 뜻 겟방식으로 보낼 내용은 네임:코딩온이다.
+                // 엑시오스가 프로미스라서 then으로. 위에 것들이 then안에 res로 들어온다. 요청에대한 응답을 던져준다. 인터넷개발자도구켜면 data라는 부분에 담겨온다.
+                //  alert(res.data); 그 반응에담긴 데이터를(name:코딩온)알람창으로띄운다. 인덱스.js파일에있는  res.send("이름은: "+ req.query.name);
+            }
+              function sendPost(){
+                var form =document.getElementById("form_info");
+                // 폼태그에서 원하는거 가져오는법
+                // form.name.value 라고 원하는값가져올수있음. 이건 폼태그에서만가능. 내가원하는 폼태그에서 네임속성이 네임인 속성을가져오겠다
+                // form.age.value 내가원하는 폼태그에서 에이지인 속성을가져오겠다/ 폼에서는 네임속성을 지정하고 스크립태트개으세 어떤네임인지 form.age.value처럼
+                // 적어서 네임속성을 가져올수있따 
+               
+                axios({
+                    method: "post",
+                    url: "/form", 
+                    // params:{ name: "codingon"}
+                    data:{ name: form.name.value}
+                    //포스트는 메소드 포스트로 바꾸고 데이타라고 쓰면된다.
+                }).then(function(res){
+                    
+                    alert(res.data.msg);
+                    // res.data={msg:~~~}니까 alert(res.data.msg);라고 키까지 적어줘야됨. 
+                });
+                // 엑시오스함수실행 url 뒤에있는게 폼에서의 액션경로임.내가보낼 주소.   method:get은 어디로 보내겠다는 뜻 겟방식으로 보낼 내용은 네임:코딩온이다.
+                // 엑시오스가 프로미스라서 then으로. 위에 것들이 then안에 res로 들어온다. 요청에대한 응답을 던져준다. 인터넷개발자도구켜면 data라는 부분에 담겨온다.
+                //  alert(res.data); 그 반응에담긴 데이터를(name:코딩온)알람창으로띄운다. 인덱스.js파일에있는  res.send("이름은: "+ req.query.name);
+            }
+        </script>
+    </head>
+<body>
+    <button type="button" onclick="sendGet();">get</button>
+    <button type="button" onclick="sendPost();">post</button>
+    <form id="form_info">
+        <input type="text" name="name">
+        <!-- 폼에서 네임속성지정하라는게 이거 앞에 name을 뜻하는거고 form.age.value가져오고싶을땐 name="age"라고 해야됨!  -->
+    </form>
+<!-- 원래 원하는 아이디정보를 겟엘레멘트아이디.value이런걸로 가져올수있는데. 폼태그에서는 네임속성값을 지정해야된다 그게아마 form_info?인듯?-->
+</body>
+</html>

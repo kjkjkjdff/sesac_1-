@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function sendGet(){ 
+            var form =document.getElementById("form_info");
+            
+            axios({
+                method: "get",
+                url: "/getForm2", 
+                // url이게 index.js에있는 app.get("/getForm2 이 잉름이랑 동일해야됨 
+                // params:{ name: "codingon"}
+                params:{ name: form.name.value,
+                         gender: form.gender.value,
+                         birthYear: form.birthYear.value,
+                         birthmonth: form.birthmonth.value,
+                         birthday: form.birthday.value
+                        }
+                        // 클라이언트가 파람스로 정보를 보내는거임. 주소뒤에뜨는 정보들이고..콘솔뜨는이유는 index.js에서  console.log(req.query);이거 해놔서그럼 
+            }).then(function(res){
+                console.log(res);
+                // alert(res.data);
+                alert(res.data.msg)
+                // res.data={msg:~~~}니까 alert(res.data.msg);라고 키까지 적어줘야됨. alert말고한줄뜨려면 다큐먼트..바이아이디..?.text로 
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <form  method="get" id="form_info" name="getform2"> 
+        <!-- 여기위에 네임은 없어도되는거임 -->
+
+        이름<input type="text" name="name">
+
+        <fieldset>
+            <legend>성별</legend>
+            <input type="radio" name="gender" value="남자" id="men">
+            <label form="men">남자</label>
+            <input type="radio" name="gender" value="여자"> 여자
+
+        </fieldset>
+        <fieldset>
+            <select name="birthYear">
+                <% for(var i=1; i<=2023; i++) {%>
+                    <option value="<%=i%>">
+                        <%=i%>년
+                    </option>
+                    <% } %>
+
+            </select>
+            <select name="birthmonth">
+                <% for(var i=1; i<=12; i++) {%>
+                    <option value="<%=i%>">
+                        <%=i%>월
+                    </option>
+                    <% } %>
+
+            </select>
+            <select name="birthday">
+                <% for(var i=1; i<=31; i++) {%>
+                    <option value="<%=i%>">
+                        <%=i%>일
+                    </option>
+                    <% } %>
+
+            </select>
+        </fieldset>
+
+
+        <button type="button"  onclick="sendGet();">회원가입</button>
+        <!-- 이걸 type=button으로 해야 페이지안넘어감 -->
+    </form>
+
+
+
+</body>
+
+</html>

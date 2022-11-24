@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        function sendPost(){
+                var form =document.getElementById("form_info");
+               
+                $.ajax({
+                    url: "/form5",
+                    type: "POST", 
+                    data: {id: form.id.value,
+                        pw: form.pw.value},
+                    success: function(data){
+                    document.querySelector("#result").innerHTML =data;
+                }
+            
+            });
+        }
+            // data니까 data로 받아야됨//그냥법칙임//서버는 안바꿔도됨. 프론트만 ajax랑 페치로 바꾸는거.
+
+    </script>
+
+</head>
+
+<body>
+    <form id="form_info">
+        이름<input type="text" name="id" placeholder="ID" required />
+        비밀번호<input type="password" name="pw" placeholder="PW"  required/>
+
+        <button type="button"  onclick="sendPost();">로그인</button>
+      
+    </form>
+
+    <div id = "result"></div>
+
+
+</body>
+
+</html>

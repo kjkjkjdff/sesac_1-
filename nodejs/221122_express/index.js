@@ -97,6 +97,12 @@ app.post("/Form3", (req, res) => {
 })
 
 // 첨엔 주소타고들어가야돼서 get으로 만들어야됨 포스트요청하더라도. 
+
+app.get("/form", function(req,res){
+    console.log(req.query);
+    res.send("이름은 : "+ req.query.name);
+});
+
 app.listen(port, () => {
     console.log("server open :", port);
 })

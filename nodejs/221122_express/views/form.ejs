@@ -5,9 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-">
     <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function sendGet(){
+            // axios get을 이용한 통신
+            axios({
+                method: "get",
+                url: "/form", 
+                params:{
+                    name: "codingon"
+                }
+            });
+            // 엑시오스함수실행 url 뒤에있는게 폼에서의 액션경로임.내가보낼 주소.   method:get은 어디로 보내겠다는 뜻 겟방식으로 보낼 내용은 네임:코딩온이다.
+        }
+    </script> -->
 </head>
 
 <body>
+    <!-- <button type="button" onclick="sendGet();">get전송</button>
+    <button type="button" onclick="sendPost();">post전송</button> -->
     <h3>get 요청</h3>
     <form action="/getForm" method="get" name="getform">
         <input type="text" name="id" value="aaa" readonly>

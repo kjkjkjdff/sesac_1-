@@ -11,8 +11,10 @@
 
     <form action="/Form3" method="post" name="getform2">
 
-        이름<input type="text" name="id" required>
-
+        이름<input type="text" name="id" placeholder="ID" pattern="^([a-zA-Z0-9가-힣]){4,}$" required title="대소문자, 한글, 숫자, 4글자 이상"/>
+        비밀번호<input type="password" name="pw" placeholder="PW" pattern="^([a-z0-9]){8,12}$" title="소문자, 숫자로 8자리 이상 12자리 이하" required/>
+        e-mail <input type="email" name="email" placeholder="username@beststartupever.com"
+        pattern=".+@beststartupever\.com">
         <fieldset>
             <legend>성별</legend>
             <input type="radio" name="gender" value="남자" id="men" required>
