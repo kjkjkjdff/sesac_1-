@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>Practice35-register</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script>
+            function register(){
+                var form = document.getElementById("form_register");
+                var formData = new FormData(form);
+                // formData를 만들 때 기본값으로 form을 보내면 현재 form에 세팅된 값으로 formData 객체가 만들어진다.
+                // append를 이용해 하나하나 만들 경우에는 아래 코드처럼 작성해야 한다.
+                /*
+FormData라는 것은 html 에서가 아닌 javascript에서 폼 데이터를 다루기 위해 사용하는 객체
+( html 에서는 <form> 태그를 이용해 폼 데이터를 만들 수 있지만, javascript에서는 form 태그를 이용하는 것이 불가능하기 때문에 formData라는 객체를 만들어 사용해야 한다. )
+var formData = new FormData();
+formData.append('id', form.id.value);
+
+formData.append( key,value ) 라는 문법을 이용할 때 key가 <input name="~~"> 에서 ~~ 가 된다.
+즉, 서버에서 req.body 로 받을 때 formData.append 할 때 이용한 key 가 req.body 에 key로 들어가게 된다.
+formData.append(key,value) -> req.body에 { key:value } 로 들어간다.
+
+                               req.body에  {dynamic-userfile: file.files[0];}이걸쓰는게아니라 이 내용이 들어온다는 뜻임...
+                            //     formData.append('daynamic-userfile', file.files[0]);가 저 형식으로 된거임  req.body.key값이렇게 가져올때처럼..?
+
+<input type="text" name="abc">
+formData.append("abc", ~~)
+
+<input name="~~"> 에서 ~~ 가 된다.에서 ~~표시가   아이디 : <input type="text" name="id"><br>
+                비밀번호 : <input type="password" name="pw"><br>
+                이름 : <input type="text" name="name"><br>의 id pw,name이런거임 !
+
+
+
+-----------------------------------------------------------------------
+axios({
+    method: 'post',
+    url: '~~',
+    data: { id: '123', pw: 'abcd'}
+}) 
+로 전송하는 것을 formData를 이용해서 전송할 때는
+//위에건 저번에 로그인동적 만들때 했던방식인데 그렇게 안하고 폼을 데이터로만들려면 밑에처럼해야됨 
+
+var formData = new FormData();
+formData.append("id", "123");
+formData.append("pw", "abcd");
+axios({
+    method: 'post',
+    url: '~~',
+    data: formData
+}) 
+로 변경해서 사용할 수 있다.
+
+                */
+
+                axios({
+                    method: "post",
+                    url: "/register2",
+                    data: formData,
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then((a) => { return a.data; })
+                .then((d) => {
+                    document.querySelector("img").src = d.path;
+                });
+            }
+            //a가 리턴한 a.data;가 다음 then의 d에 들어가서 결국 d=a.data이고 d.path가 a.data.path이다. 
+            //then((a) => { return a.data; })
+            // .then((d) => {
+            //         document.querySelector("img").src = d.path;
+            //     });
+            // }  여기서 d.path가 오는 이유는 data를 위에 리턴으로 따로 빼줬기때문임 그래서 then(d)에서는 data를 찾을필요가없으니까 d.path
+            // 저 두개를 한줄로 쓰면 then()=>   document.querySelector("img").src= a.data.path; 가 되는거임.. 읭 
+        </script>
+    </head>
+
+    <body>
+        <form id="form_register" enctype="multipart/form-data">
+            <fieldset style="width:300px;">
+                <legend> 개인 정보 </legend>
+                아이디 : <input type="text" name="id"><br>
+                비밀번호 : <input type="password" name="pw"><br>
+                이름 : <input type="text" name="name"><br>
+                나이 : <input type="text" name="age"><br>
+            </fieldset>
+            <input type="file" name="userfile">
+            <button type="button" onclick="register();">회원가입</button>
+        </form>
+        <br>
+        <img>
+    </body>
+</html>

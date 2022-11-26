@@ -1,0 +1,37 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h5> upload.single() </h5>
+       <form action="/upload-single" method="Post" enctype="multipart/form-data">
+        <input type="text" name="name" >      <!--multer 미들웨어에서 처리 ㅇ-->
+        <input type="file" name="userfile" >
+        <input type="text" name="name2" >   <!--multer 미들웨어에서 처리 x-->
+           <!-- multiple은 같은이름으로 여러개 올리기가능 멀터의 단점 name,userfile까진 멀터가 처리가능한데
+        그이후에나오는 name2는 처리할수가없음 name2로는 파일이름을 설정할수가없음. 8번째줄의 name이라는 이름으론
+    설정할수있음 그래서 9번재줄 userfile을 젤마지막에넣어야됨-->
+           <button>업로드</button>
+       </form>
+
+       <h5> upload.array() </h5>
+       <form action="/upload-array" method="Post" enctype="multipart/form-data">
+        <input type="file" name="userfile" multiple >
+        <!-- multiple은 같은이름으로 여러개 올리기가능 -->
+        <button>업로드</button>
+    </form>
+
+    <h5> upload.fields() </h5>
+       <form action="/upload-fields" method="Post" enctype="multipart/form-data">
+           <input type="file" name="userfile1" >
+           <!-- multiple은 같은이름으로 여러개 올리기가능 -->
+           <input type="file" name="userfile2">
+           <input type="file" name="userfile3">
+           <button>업로드</button>
+       </form>
+       <!-- 한개씩 여러번 -->
+
+
+
+    </body>
+</html>
