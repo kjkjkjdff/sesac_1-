@@ -20,7 +20,7 @@ app.set('view engine','ejs');
 //         if (err) throw err; //console.log(err);라도 써도되는데 throw err만 써도 찍힘 
   
 //         console.log(result); //에러가 발생하지않는경우 결과값이 찍힌다. 
-//         res.render("index", {rows: result}); //키는 rows인데암거나써도됨
+//         res.render("index", {rows: result}); //키는 rows인데암거나써도됨..
 //   });
 // });
 
