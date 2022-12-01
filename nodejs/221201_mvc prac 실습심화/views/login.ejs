@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function login(){
+                var form =document.getElementById("form_info"); //form_info의 아이디를 가져오는거니까 이걸
+                //form전체에 
+               
+                axios({
+                    method: "post",
+                    url: "/login2", 
+                    data:{ id: form.id.value,
+                        pw: form.pw.value}
+                }).then(function(res){
+                    document.querySelector("#result").innerHTML =res.data;
+                });
+            
+            }
+            //   js파일의 res.send안의 내용이 ejs파일에서 res.data임!
+    </script>
+
+</head>
+
+<body>
+    <form id="form_info">
+        이름<input type="text" name="id" placeholder="ID" required />
+        비밀번호<input type="password" name="pw" placeholder="PW"  required/>
+
+        <button type="button"  onclick="login();">로그인</button>
+      
+    </form>
+
+    <div id = "result"></div>
+
+
+</body>
+
+</html>

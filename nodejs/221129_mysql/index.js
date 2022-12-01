@@ -2,7 +2,7 @@ const express = require("express");
 const mysql = require("mysql"); //모듈이라서 맨위로.
 const app = express();
 const port = 8000;
-
+y
 
 const cnn = mysql.createConnection({
         host: 'localhost',  
