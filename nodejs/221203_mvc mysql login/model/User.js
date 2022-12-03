@@ -30,7 +30,7 @@ exports.register_visitor2 = (info, cb) =>{
         
 //         })
 // }
-
+//이거 안해도됨!!
 
 
 // exports.get_visitor = (cb)=>{
