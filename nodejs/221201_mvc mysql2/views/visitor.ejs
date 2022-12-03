@@ -7,6 +7,12 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <style>
+    .d-none {
+        display:none;
+    }
+    </style>
 </head>
 
 <body>
@@ -14,8 +20,15 @@
     <form id="form_register">
         <fieldset style="display: inline-block;">
             <legend>방명록 등록</legend>
+            <input type="hidden" name = "id" >  
+            <!-- 수정버튼만들때 필요해서 위에줄 걸어둠  -->
             이름 : <input type="text" name="name" placeholder="사용자 이름"><br>
             방명록 : <input type="text" name="comment" placeholder="방명록"><br>
+            <div class="update-btn d-none">
+                <button type="button" onclick="update_visitor();">수정</button>
+                <button type="button" onclick="">취소</button>
+            </div>
+
             <div class="register-btn">
                 <button type="button" onclick="register();">등록</button>
             </div>
@@ -35,19 +48,81 @@
                 <td><%=data[i].ID%></td>  
                 <td><%=data[i].name%></td>
                 <td><%=data[i].comment%></td>
-                <td><button type="button">수정</button></td>
-                <td><button type="button">삭제</button></td>
-
+                <td><button type="button" onclick="update_load('<%=data[i].ID%>',this);">수정</button></td>
+                <td><button type="button" onclick="delete_visitor('<%=data[i].ID%>', this);">삭제</button></td>
+                
               </tr> 
         <% } %>   
      </table>
+<!-- this에 버튼태그가 담긴다.어떤태그에 함수를 달때 그 함수의 인자로this로 넘겨주면 지금함수가 걸려있는 태그가 담긴다 온클릭함수가 버튼태그에 담겨있으니 그 태그가 this에 담긴다
+this의 부모인 td와 그의 부모인 tr까지 접근가능. 그 this를 49번째줄에 element라고 적는다(?). element.parentNode.parentNode.이건 tr태그를의미 -->
+
 
      <script>
+        let update_tr ; //tr태그를 담아두는 용도 전역변수
+
+        function update_visitor(){  //수정하는 버튼
+            var form = document.getElementById("form_register");
+            axios({
+                method: 'patch', 
+                url : "/visitor/update",
+                data: {
+                    ID: form.id.value, 
+                    name:form.name.value,
+                    comment: form.comment.value
+                }
+            })
+            .then((response)=>{
+                update_tr.children[1].innerText = form.name.value;  //수정버튼을 누르면 tr태그에있는 자식들중에서1번인댁스인 두번째td태그인 name을 여기넣어서 바꾼다.이너텍스트를 통해서 네임에있는 값을 넣어준다
+                update_tr.children[2].innerText = form.comment.value;
+
+                 form.id.value = "";  //원래의 인풋들을 등록할수잇는 상태로 기본값으로 ,빈문자열로 초기화!
+                 form.name.value = "";
+                 form.comment.value = "";  //원래상태로 돌려놓는 코드
+                $(".update-btn").addClass("d-none"); 
+                $(".register-btn").removeClass("d-none"); //다시 보이게하는 거 
+
+               
+            })
+        }
+        function update_load(id, element){   //내가보내주는 아이디값에해당하는 네임이랑,코멘트를 조회하는 함수임!
+            axios({
+                method: 'get',
+                url : "/visitor/get_visitor",
+                params : { ID: id}
+            })
+            .then((response)=>{  //response.data에는 컨트롤러에있는 rows가 있을거임 컨트롤러56번째줄
+                var form = document.getElementById("form_register");
+                form.id.value = response.data.ID;
+                form.name.value =response.data.name;    //response.data는 아이디,코멘트 객체형태로 결과나온거.
+                form.comment.value= response.data.comment;
+                $(".update-btn").removeClass("d-none"); //업데이트버튼을가진 요소를 선택해서 d-none이라는 클래스를 지우겠다.
+                $(".register-btn").addClass("d-none");//안보여주도록 바꿈 
+
+                update_tr = element.parentElement.parentElement; //tr태그//테이블의값을 동적으로 바꿀때 
+            })
+
+        }
+
+        function delete_visitor(delete_id, element){ //element는 39번째줄에있는 this임!
+            axios({
+                method: 'delete',
+                url: '/visitor/delete',
+                data: {ID: delete_id}
+            }) //앞의 요청이 끝나면 다음 then을 실행 //이거걍 id:delete_id라고해도됨 sql문에 들어갈 id임(?)
+            .then((response) =>{
+                // element.parentElement.parentNode.remove(); //tr태그를 삭제 //밑에처럼 if문써도됨 
+                if(response.data) element.parentElement.parentNode.remove(); //response는 컨트롤러의 res.send(true);를 말하는데 response.data는 true를 의미함. 그니까 if정상적으로 삭제가 잘됐으면~리무브를 실행하라!롸?
+                else alert("알 수 없는 오류 발생");
+            })
+        }
+//delete는 프라이머키로 지정된 아이디?가필요함. 메소드 get:은 데이터 조회할때 씀.post는 데이터 생성.삽입.insert. delete는 데이터 삭제.get하고 delete외에는 다 body로 받는다.
+//patch, put은 데이터 수정할때 사용  풋은 데이터 전체수정할때 .하나만 수정할때는 patch.
         function register(){
             let form = document.getElementById("form_register");
             let data = {
                 name: form.name.value,
-                comment: form.comment.value
+                comment: form.comment.value //폼의 내용이 코멘트인것의 밸류를 담고있다 
             }
             axios({
                 method: 'post',
@@ -57,19 +132,18 @@
             .then((response)=>{ 
                 $("table").append(`
                    <tr>
-                      <td>${response.data}</td> 
+                      <td>${response.data}</td>  
                       <td>${data.name}</td>  
                       <td>${data.comment}</td>
                       <td><button type="button">수정</button></td>
-                      <td><button type="button">삭제</button></td>
+                      <td><button type="button" onclick="delete_visitor(${response.data},this)">삭제</button></td> 
                    </tr>
                    `)
             })
 
         }
       </script>
-
-
+<!-- td옆의 81번째줄 ${response.data 는id임  -->
 
 </body>
 
