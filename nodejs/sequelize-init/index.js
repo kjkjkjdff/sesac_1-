@@ -12,7 +12,7 @@ const router = require("./routes");
 app.use('/visitor', router);
 // localhost:8000/visitor~~~~
 
-const userRouter = require("./routes/user");//이거 로그인페이지그거 열어주는거!
+const userRouter = require("./routes/user");//이거 로그인페이지그거 열어주는거!ㅇ
 app.use('/user', userRouter); 
 
 
