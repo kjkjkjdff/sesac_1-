@@ -18,7 +18,7 @@ exports.signin = (req,res) => {
 }
 exports.post_signin = (req,res) => {
     User.post_signin(req.body.id, req.body.pw, function(result){
-        if ( result.length > 0 ) res.send(true);
+        if ( result.length > 0 ) res.send(true);  //이거model의 18번재줄 sql문에서 각각아이디랑 비번에 해당하는 행?이 일치하는게있으면 한줄가져오니까 여기서 result.length가 1이되는거고 그럼 트루임!
         else res.send(false);
     });
 }
