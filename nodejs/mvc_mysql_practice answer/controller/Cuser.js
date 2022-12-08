@@ -27,7 +27,7 @@ exports.post_signin = (req,res) => {
 
 exports.profile = (req,res) => {
     User.get_user(req.body.id, function(result){
-        if ( result.length > 0 ) res.render("profile", {data: result[0]}); //배열전체
+        if ( result.length > 0 ) res.render("profile", {data: result[0]}); //배열전체가 한줄인데 그 안에 아이디 네임 비번있는거..result.length는 1
         else res.redirect("/user/signin");
         console.log(result);
     })
