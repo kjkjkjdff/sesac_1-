@@ -42,10 +42,23 @@
              $(".login-btn").addClass("d-none");
              $(".register-btn").addClass("d-none");
              } else {
+
+
              $(".register-btn").removeClass("d-none");
              $(".login-btn").removeClass("d-none");
              }
 
+            
+             function logout(){
+                var form =document.getElementById("form_info"); 
+                axios({
+                    method: 'delete',
+                    url: '/logout'
+                }).then((response)=>{
+                    document.location.href = '/';
+                    alert('로그아웃 되었습니다');
+                });
+             }
     </script>
 
             
