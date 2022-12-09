@@ -7,7 +7,13 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+   
 
+    <style>
+        .d-none {
+            display:none;
+        }
+    </style>
    
 
 </head>
@@ -15,18 +21,34 @@
 <body>
     <form action="/register" method="get" name="register" id="form_info">
 
+        <div class="login-btn">
         <button type="button"  onclick="location.href='http://localhost:8000/login'">로그인</button>
         </div>
         <div class="register-btn">
-            <button type="button" >회원가입</button>
+            <button type="button" > 회원가입</button>
         </div>
+        <div class="logout-btn d-none">
+            <button type="button"  onclick="logout();">로그아웃</button>
+        </div>
+
     </form>
 
 
     
-    
+    <script>
 
-       
+             if("<%=isLogin%>" == 'true' ) {
+             $(".logout-btn").removeClass("d-none"); 
+             $(".login-btn").addClass("d-none");
+             $(".register-btn").addClass("d-none");
+             } else {
+             $(".register-btn").removeClass("d-none");
+             $(".login-btn").removeClass("d-none");
+             }
+
+    </script>
+
+            
  
 
 </body>
