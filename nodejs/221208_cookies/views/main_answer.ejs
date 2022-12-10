@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+   
+
+    <style>
+       
+    </style>
+   
+
+</head>
+
+<body>
+    <% if( !isLogin ) {%>
+        <!-- //이즈로그인이 false인경우엔 !이거붙이면 true가돼서 이 if문이 실행된다 
+        false인 경우엔 여기 if문으로 들어오도록?  잉 그냥 !islogin이 이즈로긴이 거짓이라는거니까 로긴,회원가입이 나온다..-->
+       <a href ="/login"> 로그인 </a>
+       <a href = "/register">회원가입</a>
+    <% } else {%>  
+        <div><%=id%>님 환영합니다,</div>
+        <!-- //이즈로그인이 트루일경우엔 이 else를 읽겠다 -->
+       <a href ="/logout">로그아웃</a>
+    <% } %>
+  
+    </script>
+
+    <!-- 로그아웃은 function만들고 axios랑 버튼만들어서 하고 페이지이동은 window.그거써서 강제로 이동시켜도됨 -->
+
+<!-- 
+    <% if( isLogin ) {%>
+        
+        <div><%=id%>님 환영합니다,</div>
+        //이즈로그인이 트루일경우엔 이 else를 읽겠다
+       <a href ="/logout">로그아웃</a>
+    <% } else {%>  
+        <div><%=id%>님 환영합니다,</div>
+     
+       <a href ="/login"> 로그인 </a>
+       <a href = "/register">회원가입</a>
+    <% } %>
+    위에거를 이렇게 바꿔도 똑같음! 
+   -->
+             
+ 
+
+</body>
+
+</html>

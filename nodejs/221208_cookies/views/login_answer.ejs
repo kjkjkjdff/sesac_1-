@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+   
+    <style>
+      
+    </style>
+
+</head>
+
+<body>
+    <form id="form_login">
+
+
+        <input type="text" name="id"> 
+        <input type="text" name="pw">
+        
+        <button type="button"  onclick="login();">로그인</button>
+      
+        
+    </form>
+
+
+    <script>
+        
+       
+  
+       
+        function login(){
+                var form =document.getElementById("form_login"); //어차피 id를 선택하는거라서 샾안적고 form_login만 적는거임. 
+                
+                axios({ //동적폼전송/ axios cdn 검색해서 getting start문서가서 usingjsdelivr cdn복사
+                    method: "post",
+                    url: "/login", //어차피 겟이랑 포스트 메소드달라서 url같아도됨.
+                    data:{ 
+                        id: form.id.value,
+                        pw: form.pw.value
+                    }
+                }).then((res)=>{
+                    if(res.data) {
+                    alert("로그인 성공");
+                    window.location.href = "/";
+                }
+                    else {
+                        alert("로그인 실패");
+                        form.reset();  //폼안에 정보없애주는
+                    }
+                    console.log(res.data); 
+                })
+            }
+                   
+    </script>
+ 
+
+
+
+</body>
+
+</html>
+
+<!-- window.location.href = '/'; -->

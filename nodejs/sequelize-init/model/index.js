@@ -57,7 +57,37 @@ db.Visitor = require("./Visitor")(sequelize, Sequelize);  //이 괄호는 함수
 //     "Visitor": "Visitor.js에서 return받은 값"
 // } 윗부분코드는 이렇게 됐다는 뜻임. 
 
+
 db.User = require("./User")(sequelize, Sequelize); 
+
+db.User = require("./User")(sequelize, Sequelize);
+db.Product = require("./Product")(sequelize, Sequelize);
+db.Payment = require("./Payment")(sequelize, Sequelize);
+
+db.User.hasMany(db.Payment, {
+    foreignKey : "user_id", //페이먼트테이블에있는 거
+    sourceKey : "user_id", //유저테이블에있는 user_id
+    onDelete: "cascade"
+})
+//유저라는 한사람은 여러개의 결제내역을 가질수있음 
+
+db.Payment.belongsTo(db.User, {
+    foreignKey : "user_id", 
+    sourceKey : "user_id", 
+    onDelete: "cascade"
+});
+
+db.Product.hasMany(db.Payment, {
+    foreignKey: "product_id",
+    sourceKey : "product_id", 
+    onDelete: "cascade"
+})
+
+db.Payment.belongsTo(db.User, {
+    foreignKey : "product_id", 
+    sourceKey : "product_id", 
+    onDelete: "cascade"
+});
 
 module.exports = db;
 
