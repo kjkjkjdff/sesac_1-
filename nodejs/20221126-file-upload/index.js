@@ -32,7 +32,7 @@ const upload = multer({
 // const filename = Date.now()+ ext; 
 // const filename = req.body.name+ ext; 
 // //밑에거는 이름직접지ㅇ정 이름직접지정하고싶으면 파일ejs의 userfile보다위에있는 name으로해양됨. 그뒤에있는걸 req.body.name2 이렇게
-//name2로하면 언디파인드라고뜸 
+//name2로하면 언디파인드라고뜸 d
 
 app.get("/file", (req,res)=> {
     res.render("file");
