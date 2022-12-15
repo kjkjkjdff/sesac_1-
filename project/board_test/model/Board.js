@@ -1,4 +1,4 @@
-const Visitor = ( Sequelize, DataTypes)=>{  
+const Board = ( Sequelize, DataTypes)=>{  
     return Sequelize.define(    
       "board_list2", 
       {
@@ -6,7 +6,7 @@ const Visitor = ( Sequelize, DataTypes)=>{
               type: DataTypes.INTEGER.UNSIGNED,
               allowNull: false, 
               primaryKey: true, 
-              autoIncrement: ture
+              autoIncrement: true
           },
 
           title : { 
@@ -18,7 +18,10 @@ const Visitor = ( Sequelize, DataTypes)=>{
             type: DataTypes.STRING(10),  
             allowNull: false 
           },
-
+           content : {
+            type: DataTypes.TEXT,
+            allowNull: true   
+           },
            date : { 
             type: DataTypes.DATE,
             allowNull: false 
