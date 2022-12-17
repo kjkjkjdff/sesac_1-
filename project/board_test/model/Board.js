@@ -24,7 +24,8 @@ const Board = ( Sequelize, DataTypes)=>{
            },
            date : { 
             type: DataTypes.DATE,
-            allowNull: false 
+            allowNull: false,
+            defaultValue: DataTypes.NOW
           },
 
            hit: { 

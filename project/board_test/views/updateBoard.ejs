@@ -120,42 +120,41 @@
                  </div>
               </div>
             <div class="bt_wrap">
-                <button type="button" class="btn btn-outline-secondary"  id="btn_w" onclick="register();">등록</button>
-                <button type="button" class="btn btn-outline-secondary"  id="btn_c" onclick="location.href='list.ejs'">취소</button>
+                <button type="button" class="btn btn-outline-secondary"  id="btn_w" onclick="update();">수정
+                </button>
+                <button type="button" class="btn btn-outline-secondary"  id="btn_c" onclick="document.location.href='/user/'">취소</button>
             </div>
         </form>  
         </div>
     </div>
 
 
-    <script>//df
+    <script>
           
-            function register() {
-                var form = document.getElementById("form_write");
+            // function update() {
+            //     var form = document.getElementById("form_write");
                 
-                let data = {
+            //     let data = {
                   
-                   title: form.title.value,
-                   id: form.id.value,
-                   content: form.content.value,
-                   date: '2022-12-15',
-                   hit: '0'
-                };
+            //        title: form.title.value,
+                    
+            //        content: form.content.value,
+
+            //     };
                 
-                axios({
-                    method: 'post',
-                    url: '/user/write',
-                    data: data
-                })
-                .then((res) => {
-                    console.log(res);
+            //     axios({
+            //         method: 'post',
+            //         url: '/user/update',
+            //         data: data
+            //     })
+            //     .then((res) => {
+            //         console.log(res);
                     
                    
                   
-                });
-            }
+            //     });
+            // }
       
     </script>
 </body>
 </html>
-    
