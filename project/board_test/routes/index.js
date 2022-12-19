@@ -10,7 +10,7 @@ router.post("/write", user.write_data);
 
 router.get("/read", user.read);
 
-router.get("/update", user.update);
+router.patch("/update", user.update);
 // router.post("/update", user.update_data);
 
 router.delete("/delete", user.delete);

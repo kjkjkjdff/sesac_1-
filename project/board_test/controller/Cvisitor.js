@@ -71,8 +71,22 @@ exports.delete = (req, res) => {
 }
 
 
-exports.update = (req,res) => {
-    res.render("updateBoard");
+// exports.update = (req,res) => {
+//     res.render("updateBoard");
+// }
+exports.update = (req, res) => {
+    let data = {
+        title: req.body.title,
+        id : req.body.id,
+        content : req.body.content
+    }
+    Board.update(data, {
+        where: {number: req.body.number}
+    })
+    .then((result)=>{
+        console.log(result);
+        res.render("updateBoard");
+    })
 }
 
 
