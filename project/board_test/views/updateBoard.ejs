@@ -136,12 +136,13 @@
                 method: 'patch',
                 url : "/user/update",
                 data: {
+                    number: "<%=data.number%>",
                     title: form.title.value,
                     id: form.id.value,
                     content: form.content.value,
                 }
-            })
-            then((data) => {
+            }).then((rep) => {return rep.data;} ) //밑에거 작동하게 해주는 코드 (?)
+            .then((data) => {
                     if( data ) {
                         alert( "수정 완료" );
                         document.location.href='/user';
@@ -158,7 +159,7 @@
 
         //     form.title.value = 'test';
         //     })
-        // }  //필요없나?
+        // }  //필요없나?ㅜ
     </script>
 </body>
 </html>

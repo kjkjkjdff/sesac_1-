@@ -119,6 +119,12 @@
                     <textarea name="content" placeholder="내용 입력"></textarea>
                  </div>
               </div>
+
+           <h5> 파일업로드</h5>
+           <input type="file" name="boardfile">
+
+           </form>
+
             <div class="bt_wrap">
                 <button type="button" class="btn btn-outline-secondary"  id="btn_w" onclick="register();">등록</button>
                 <button type="button" class="btn btn-outline-secondary"  id="btn_c" onclick="document.location.href='/user'">취소</button>
@@ -126,33 +132,51 @@
         </form>  
         </div>
     </div>
-
+   
 
     <script>
           
             function register() {
                 var form = document.getElementById("form_write");
-                
-                let data = {
-                   
-                   title: form.title.value,
-                    
-                   content: form.content.value,
-
-                };
+                var formData = new FormData(form);              
                 
                 axios({
                     method: 'post',
                     url: '/user/write',
-                    data: data
+                    data :  formData,
+                    headers : {
+                    'Content-Type': 'multipart/form-data'
+
+                }
+                }).then((rep) => {return rep.data;} )
+                 .then((data) => {
+                    if( data ) {
+                        alert( "작성 완료" );
+                        document.location.href='/user';
+                    }                                    //mp3파일이들어오면 작성완료
+                }).catch((err) => {
+                    alert( "알 수 없는 문제가 발생했습니다." ); //다른파일이 들어오면 catch로 오류발생!
                 })
-                .then((res) => {
-                    console.log(res);
-                    
-                   
-                  
-                });
             }
+
+            
+            // function upload_board_file(){
+            //     var form = document.getElementById("form_upload");
+            //     var formData = new FormData(form);
+            //     axios({
+            //        method : 'post',
+            //        url : '/board_file',
+            //        data :  formData,
+            //        headers : {
+            //         'Content-Type': 'multipart/form-data'
+
+            //     }
+            //     }).then((a) => { return a.data; })
+            //     .then((d) => {
+            //         document.querySelector("img").src = "static/uploads/" + d.path;
+            //     });
+            // }
+            //이거 필요없음!!! 등록버튼이랑 연결된 register함수랑 합쳤음!
       
     </script>
 </body>

@@ -121,9 +121,18 @@
                   
                     
                 </div>
+                <%
+                    if ( data.filename != null ) {   
+                %>
+                <a href="/static/board/<%=data.filename%>" target="_blank"><%=data.filename%></a> 
+                <%
+                    }
+                %>
+                <!-- 만약에, data의 파일이름이 null이 아니면, data의 파일을 보여주는 페이지를 열리게 하는 링크 코드+ a링크 사이에 data.filename을 써서 
+                     파일 이름을 바로 보여준다 -->
             </div>
             <div class="bt_wrap">
-                <button type="button" class="btn btn-outline-secondary"  id="btn_correct" onclick="">수정</button>
+                <button type="button" class="btn btn-outline-secondary"  id="btn_correct" onclick="document.location.href='/user/update?number=<%=data.number%>'">수정</button>
                 <button type="button" class="btn btn-outline-secondary"  id="btn_delete" onclick="delete_Board();">삭제</button>
                 <button type="button" class="btn btn-outline-secondary"  id="btn_cancel" onclick="document.location.href='/user'">목록</button>
                
@@ -131,7 +140,6 @@
         </div>
       
     </div>
-    
     <!-- <div id="disqus_thread"></div>
     <script>
     /**
@@ -152,7 +160,7 @@
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
 
-    <tr>
+    <!-- <tr>
         <td colspan="2"><input type="text" size="50"><input id="write_com" type="button" value="댓글작성"></td>
     </tr>
     <tr>
@@ -163,6 +171,20 @@
         </td>
     </tr>
     <script>
+        $('button').on('click', function(){
+            $.ajax({
+                url: "/comment",
+                type: "POST", 
+                success : function(data){
+                    var txt = "<table border='1'>";
+                
+                  txt += "</table>";
+                  $('div').append(txt);
+                }
+            })
+        })
+    </script>
+    <script>
         var num = 1;
         $('#wirte_com').on('clikc',function(){
             var com = $('input[type=text]').val();
@@ -170,9 +192,10 @@
             num++;
             $('input[type=text]').val('');
         });
-    </script>
+    </script> -->
+
     <script>
-     
+ 
      function delete_Board() {
                 
                 let user = {

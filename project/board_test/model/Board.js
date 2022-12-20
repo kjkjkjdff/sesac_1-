@@ -15,7 +15,7 @@ const Board = ( Sequelize, DataTypes)=>{
           },
 
            id : { 
-            type: DataTypes.STRING(10),  
+            type: DataTypes.STRING(20),  
             allowNull: false 
           },
            content : {
@@ -32,7 +32,11 @@ const Board = ( Sequelize, DataTypes)=>{
               type: DataTypes.INTEGER.UNSIGNED,
               allowNull: false,
               defaulteValue : "0"
-          }
+          },
+          filename : { 
+           type: DataTypes.STRING(255),  
+           allowNull: true 
+         },
       },
       {
           tableName: "board_list2",  

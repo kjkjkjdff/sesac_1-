@@ -1,4 +1,5 @@
 const { Board } = require("../model");
+const fs =require("fs").promises;
 
 exports.index = (req,res) => {
     // res.render("list", {data: result });
@@ -7,7 +8,6 @@ exports.index = (req,res) => {
         order: [["number", "DESC"]],
     })
     .then((result) => {
-        console.log(result)
         res.render("basicBoard", {data: result });
     })
     
@@ -31,6 +31,7 @@ exports.write = (req,res) => {
 
 
 exports.write_data = (req, res) => {
+    console.log( req.file );
     let data = {
        title: req.body.title,
        id: 'user',     // id: req.session.user //세션 req.session.user = req.body.id;  이런식으로 나중에 넣기!
@@ -38,15 +39,14 @@ exports.write_data = (req, res) => {
        hit: 0      //글조회 페이지ejs에 함수로 넣어서 클릭하면 조회수올라가게!하고 ejs에서 컨트롤러쪽으로 요청보내면 컨트롤러에서 조회수 올리도록..(?) 날짜올라가는거 전에 배운거~~  req.body서버로 보낸거 응답개수랑 ejs에서 title,content처럼 보내준 갯수랑 일치해야되는거임.
                    //id랑 hit은 서버에서 보내주고있는값이아니라 알아서 들어오기때문에 안맞춰줘도 됨 
     }
+    if ( req.file ) data["filename"] = req.file.filename;
     Board.create(data)
     .then((result)=>{
-       console.log(result);
        res.send(String(result));
-
    })
 }
-
 exports.read = (req,res) => {
+    Board.increment({hit: 1}, {where: {number: req.query.number}}); //조회수 증가시키는 코드 
     Board.findOne({
         where : { 
             number: req.query.number
@@ -54,7 +54,6 @@ exports.read = (req,res) => {
         } 
     })
     .then((result) => {
-        console.log(result)
         res.render("readBoard", {data: result });
     })
     
@@ -74,7 +73,25 @@ exports.delete = (req, res) => {
 // exports.update = (req,res) => {
 //     res.render("updateBoard");
 // }
+
+
+exports.update_number = (req,res) => { //리드보드에서 업데이트보드로 /user/update?number=<%=data.number%>에서 ?뒤에있는 부분 넘겨주는 방법임.
+    console.log( req.query.number );
+    Board.findOne({
+        where : { 
+            number: req.query.number
+           
+        } 
+    })
+    .then((result) => {
+        console.log(result)
+        res.render("updateBoard", {data: result });
+    })
+    
+}
+
 exports.update = (req, res) => {
+    console.log( "user+_update")
     let data = {
         title: req.body.title,
         id : req.body.id,
@@ -85,9 +102,8 @@ exports.update = (req, res) => {
     })
     .then((result)=>{
         console.log(result);
-        res.render("updateBoard");
+        res.send(result); //업데이트보드에서 수정버튼누르고나서 진행될 동작들~~~    //데이터가 타이틀,아이디,컨텐츠,넘버 총 4갠데 ejs upate함수에서 data에 넘버 빼먹어서 오류났었음 ㅠ 
     })
 }
 
 
-// exports.update_data = (req,res) => {}
