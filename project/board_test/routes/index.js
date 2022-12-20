@@ -28,7 +28,7 @@ router.post("/write",upload.single('boardfile'), user.write_data);
 
 router.get("/read", user.read);
 
-router.get("/update", user.update_number);  //첨에 /update?number=<%=data.number%>넣어서 안됐었는데 ?뒤에있는건 쿼리스트링이라서...컨트롤러에서 쿼리로 받아야됨.//이건 리드보드에서 업데이트보드로 url number쿼리 넘겨주는 라우터임!
+router.get("/update", user.update_number);  //첨에 /update?number=<%=data.number%>넣어서 안됐었는데 ?뒤에있는건 쿼리스트링이라서....컨트롤러에서 쿼리로 받아야됨.//이건 리드보드에서 업데이트보드로 url number쿼리 넘겨주는 라우터임!
 router.patch("/update", user.update);
 // router.post("/update", user.update_data);
 
