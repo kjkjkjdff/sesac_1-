@@ -40,6 +40,8 @@ exports.write_data = (req, res) => {
                    //id랑 hit은 서버에서 보내주고있는값이아니라 알아서 들어오기때문에 안맞춰줘도 됨 
     }
     if ( req.file ) data["filename"] = req.file.filename;
+    // req.file 이 있다는 것은 파일을 업로드했다는 것
+    // let data라는 객체 안에 req.file 이 있으면, 즉 파일을 업로드했으면, data 라는 객체에 filename 이라는 key로 req.file.filename( 내가 업로드한 파일 이름 ) 을 넣어서 만들어라.
     Board.create(data)
     .then((result)=>{
        res.send(String(result));
@@ -79,30 +81,35 @@ exports.update_number = (req,res) => { //리드보드에서 업데이트보드�
     console.log( req.query.number );
     Board.findOne({
         where : { 
-            number: req.query.number
+            number: req.query.number //튜플에 있는 number에 맞는 게시글을 하나 가져온다
            
         } 
     })
     .then((result) => {
         console.log(result)
-        res.render("updateBoard", {data: result });
+        res.render("updateBoard", {data: result }); //업데이트보드에 데이터를 결과로 뿌려준다
     })
     
 }
 
 exports.update = (req, res) => {
-    console.log( "user+_update")
+    console.log( "user+_update");
+    console.log('test', req.file);
     let data = {
         title: req.body.title,
         id : req.body.id,
         content : req.body.content
     }
+    if ( req.file ) data["filename"] = req.file.filename;
+
     Board.update(data, {
         where: {number: req.body.number}
     })
     .then((result)=>{
         console.log(result);
-        res.send(result); //업데이트보드에서 수정버튼누르고나서 진행될 동작들~~~    //데이터가 타이틀,아이디,컨텐츠,넘버 총 4갠데 ejs upate함수에서 data에 넘버 빼먹어서 오류났었음 ㅠ 
+        // res.send({path: req.file.path}); 이건 파일 이미지를 보여줄때 사용하는 방법 
+        // res.send({result: result, path: req.file.path}); send로 두개보내는법
+        res.send(result); //업데이트보드에서 수정버튼누르고나서 진행될 동작들~~~    //데이터가 타이틀,아이디,컨텐츠,넘버 총 4갠데 ejs upate함수에서 data에 넘버 빼먹어서 오류났었음 
     })
 }
 

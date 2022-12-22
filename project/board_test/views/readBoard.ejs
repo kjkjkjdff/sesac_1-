@@ -83,7 +83,7 @@
             
             
         }
-
+        
 </style>
 
 <body>
@@ -119,8 +119,19 @@
                 <div class="cont">
                     <%=data.content%><br>
                   
+                <%
+                    if ( data.filename != null ) {   
+                        if ( data.filename.includes(".png") || data.filename.includes(".jpg")) {
+                        %>
+                        <div class="img"><img src="/static/board/<%=data.filename%>" width="500">  
+                <%
+                    } }
+                %>
+                    </div>
                     
                 </div>
+                <!-- 만약에 data의 파일이름이 null이 아니고, date의 파일네임에 png가 들어있거나또는 data의 파일네임에 jpg가 들어있으면 div class=img 태그를 보여줘라! -->
+
                 <%
                     if ( data.filename != null ) {   
                 %>
