@@ -1,4 +1,4 @@
-const { Board } = require("../model");
+const { Board } = require("../model/index_board");
 const fs =require("fs").promises;
 
 exports.index = (req,res) => {

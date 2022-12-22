@@ -8,7 +8,7 @@ app.use(express.urlencoded({extended: true}));
 app.use( express.json() );
 // app.use(methodOverride('_method'));
 
-const router = require("./routes");
+const router = require("./routes/index_board");
 app.use('/user', router);
 
 app.get('*', (req,res) =>{
