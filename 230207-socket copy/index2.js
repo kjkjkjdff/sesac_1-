@@ -22,4 +22,4 @@ http.listen( 8000, () => {
   console.log('Sever port : ', 8000 );
 })
 
-//index2.html이랑 index.js는 함수안에 소켓이 있을때랑 없을때 차이 설명하기 위한 코드..
+//index2.html이랑 index.js는 함수안에 소켓이 있을때랑 없을때 차이 설명하기 위한 코드...
