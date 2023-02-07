@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+  <title>soket 사용하기</title>
+</head>
+<body>
+    <h2>soket.io 사용하기</h2>
+  <script>
+    // 이벤트 기반
+    // 메세지 보내기 : socket.emit('이벤트명', data) // 데이타는 객체든 뭐든 상관 x
+    // 메세지 받기 : socket.on('이벤트명', (data) => {}) // data 콜벡 함수로 받음
+
+    // 클라이언트 소켓 생성 후 연결
+    let socket = io.connect(); // (1) 소켓이 연결되면 
+    
+    function initialize() {                      //(6)여기처럼 initialize버튼을하나 만들고 (1)의 function send_message코드를 넣고 여기 initialize 함수안에 socket.on을 넣으면 보내기 누르고 시작하기눌러서(함수를 실행 해야 소켓이 실행됨) 보내기를 눌러야 message가왓습니다 라고 뜬다
+      socket.on('message', () => {
+        console.log( 'message 가 왔습니다.' );
+      })
+    }
+
+    // socket.on('message', () => {              //(5) 그럼 여기에서 받아서 인터넷에서 message가왓습니다가뜨는데 밑에 function send_message랑 여기있는 socekt.on코드를 쓰면 바로 실행되는거고 
+    //     console.log( 'message 가 왔습니다.' );
+    //   })
+    
+
+    function send_message() {  //(1)보내기버튼 누르면 emit으로 send가 되고 
+      socket.emit('send', {})
+    }
+  </script>
+  <h2>hello world!</h2>
+  <button onclick="send_message()">보내기</button>
+  <button onclick="initialize()">시작하기</button>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+    <h2>Hello World!</h2>
+    
+  
+    <!-- <button onclick="hello()">hello</button> 함수따로설정했을때 --> 
+
+    <button onclick="btnSend('hello')">hello</button>
+    <button onclick="btnSend('study')">study</button>
+    <button onclick="btnSend('bye')">bye</button>
+    <script>
+        
+        let socket =io.connect();
+
+        // socket.on('connect', () => {   //'connect'는 고정임  이벤트명은 아무거나 써도됨 
+        //     console.log('server connected'); //크롬콘솔에 뜸 
+        // })
+
+     
+        // socket.on('welcome', (data) => {   //상관없는코드
+        //         // data : {msg : ''}
+        //         console.log(data.msg)
+        //         socket.emit('response', 'hello')
+        //     })
+
+
+    
+
+        // const hello=() => {    //함수따로설정햇을때의 코드 
+        //     socket.emit("hello_e", "hello" ) //이벤트명이 hello_e
+        //     // socket.on('response', (msg)=>{  // 1. 함수안에 소켓이 들어있으면 함수가 실행될때만 소켓이 실행돼서 밖으로 
+        //     //     console.log(msg);
+        //     // })
+        // }
+
+        const btnSend = (msg) => {      //<1>.맨먼저 버튼을누르면 클라이언트에서 send를 한다
+            socket.emit('send', msg)
+        }
+ 
+        socket.on('response', (msg)=> { //2.밖으로  //<4>. response를 받아온다 클라이언트에 hello:안녕하세요!라고 찍힌다 
+            console.log(msg);
+        })
+
+    </script>
+</body>
+</html>

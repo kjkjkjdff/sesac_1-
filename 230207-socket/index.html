@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-">
+    <title>Document</title>
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+    <h2>Socket.io 사용하기</h2>
+    <script>
+        // 메세지 보내기 : socket.emit("이벤트명", data)   //data는 객체나 문자열 아무거나로 보내도됨 
+        // 메세지 받기 : socket.on("이벤트명", (data) => {} )    //받을때는 콜백함수의 인자로들어옴
+
+
+        //클라이언트 소켓 생성후 연결
+        let socket =io.connect();
+
+        socket.on('connect', () => {   //'connect'는 고정임  이벤트명은 아무거나 써도됨 
+            console.log('server connected'); //크롬콘솔에 뜸 
+        })
+
+        socket.on('welcome', (data)=> {   //서버에게서 웰컴메시지를받음
+            //data: {msg: ' '}
+            console.log(data.msg)
+            socket.emit('response', 'hello')// 메세지를 받앗을때 보내주겟다는 뜻. 클라이언트가 보낸다.
+        })
+    </script>
+</body>
+</html>
