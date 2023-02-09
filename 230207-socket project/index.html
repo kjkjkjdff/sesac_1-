@@ -13,85 +13,405 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
-    <title>Frontend Mentor | Agam Singh</title>
+    <!-- <link href="/static/css/chat.css" rel="stylesheet" /> -->
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+    <title>chatting</title>
   </head>
+ 
+  <style>
+*{
+  box-sizing:border-box;
+}
+body{
+  background-color:#abd9e9;
+  font-family:Arial;
+}
+#container{
+  width:500px;
+  height:1200px;
+  background:#eff3f7;
+  margin:0 auto;
+  font-size:1;
+  border-radius:5px;
+  /* overflow:hidden; */
+}
+
+div.notice {
+  /* margin-top: -300px; */
+  text-align: center;
+} 
+
+aside{
+  width:260px;
+  height:800px;
+  background-color:#3b3e49;
+  display:inline-block;
+  font-size:15px;
+  vertical-align:top;
+}
+main{
+  width:490px;
+  height:800px;
+  display:inline-block;
+  font-size:15px;
+  vertical-align:top;
+}
+aside header{
+  padding:30px 20px;
+}
+aside input{
+  width:100%;
+  height:50px;
+  line-height:50px;
+  padding:0 50px 0 20px;
+  background-color:#5e616a;
+  border:none;
+  border-radius:3px;
+  color:#fff;
+  background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_search.png);
+  background-repeat:no-repeat;
+  background-position:170px;
+  background-size:40px;
+}
+aside input::placeholder{
+  color:#fff;
+}
+aside ul{
+  padding-left:0;
+  margin:0;
+  list-style-type:none;
+  overflow-y:scroll;
+  height:690px;
+}
+aside li{
+  padding:10px 0;
+}
+aside li:hover{
+  background-color:#5e616a;
+}
+h2,h3{
+  margin:0;
+}
+aside li img{
+  border-radius:50%;
+  margin-left:20px;
+  margin-right:8px;
+}
+aside li div{
+  display:inline-block;
+  vertical-align:top;
+  margin-top:12px;
+}
+aside li h2{
+  font-size:14px;
+  color:#fff;
+  font-weight:normal;
+  margin-bottom:5px;
+}
+aside li h3{
+  font-size:12px;
+  color:#7e818a;
+  font-weight:normal;
+}
+.status{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  display:inline-block;
+  margin-right:7px;
+}
+.green{
+  background-color:#58b666;
+}
+.orange{
+  background-color:#ff725d;
+}
+.blue{
+  background-color:#6fbced;
+  margin-right:0;
+  margin-left:7px;
+}
+main header{
+  height:110px;
+  padding:30px 20px 30px 40px;
+}
+main header > *{
+  display:inline-block;
+  vertical-align:top;
+}
+main header img:first-child{
+  border-radius:50%;
+}
+main header img:last-child{
+  width:24px;
+  margin-top:8px;
+}
+main header div{
+  margin-left:10px;
+  margin-right:145px;
+}
+main header h2{
+  font-size:16px;
+  margin-bottom:5px;
+}
+main header h3{
+  font-size:14px;
+  font-weight:normal;
+  color:#7e818a;
+}
+#chat{
+  padding-left:0;
+  margin:0;
+  list-style-type:none;
+  overflow-y:scroll;
+  height:800px;
+  border-top:2px solid #fff;
+  border-bottom:2px solid #fff;
+}
+#chat li{
+  padding:10px 30px;
+}
+#chat h2,#chat h3{
+  display:inline-block;
+  font-size:13px;
+  font-weight:normal;
+}
+#chat h3{
+  color:#bbb;
+}
+#chat .entete{
+  margin-bottom:5px;
+}
+#chat .message{
+  padding:20px;
+  color:#fff;
+  line-height:25px;
+  max-width:90%;
+  display:inline-block;
+  text-align:left;
+  border-radius:5px;
+}
+#chat .me{
+  text-align:right;
+}
+#chat .you .message{
+  background-color:#7adda8;
+}
+
+.dm.you {
+  background-color:red;
+}
+
+#chat .me .message{
+  background-color:#6fbced;
+}
+#chat .triangle{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+}
+#chat .you .triangle{
+    border-color: transparent transparent #7ADDA8;
+    margin-left:15px;
+}
+#chat .me .triangle{
+    border-color: transparent transparent #6FBCED transparent;
+    margin-left:375px;
+}
+main footer{
+  height:155px;
+  padding:20px 30px 10px 20px;
+}
+main footer textarea{
+  resize:none;
+  border:none;
+  display:block;
+  width:100%;
+  height:80px;
+  border-radius:3px;
+  padding:20px;
+  font-size:13px;
+  margin-bottom:13px;
+}
+main footer textarea::placeholder{
+  color:#ddd;
+}
+main footer img{
+  height:30px;
+  cursor:pointer;
+}
+main footer a{
+  text-decoration:none;
+  text-transform:uppercase;
+  font-weight:bold;
+  color:#6fbced;
+  vertical-align:top;
+  margin-left:333px;
+  margin-top:5px;
+  display:inline-block;
+}
+  </style>
   <body>
-    <div class="phone">
-      <div class="phone-header">
-        <div class="phone-header-camera"></div>
-        <div class="phone-header-description">
-          <div class="phone-header-left">
-            <i class="uil uil-angle-left"></i>
-            <img src="images/avatar.jpg" alt="" />
-            <div class="profile-name">
-              <p class="name">Samuel Green</p>
-              <p class="availability">Available to Walk</p>
+
+
+    <div id="container">
+      <main>
+        <header>
+          <!-- <img src="../230207-socket project/static/img/profile.jpg" alt=""> -->
+          <div>
+            <h2>Chat with kmj</h2>
+            <h3>already 3 messages</h3>
+          </div>
+          <!-- <img src="../static/img/profile.jpg" alt=""> -->
+        </header>
+        <ul id="chat">
+          <li class="you">
+            <div class="entete">
+              <span class="status green"></span>
+              <h2>상대방</h2>
+              <h3>10:12AM, Today</h3>
             </div>
-          </div>
+            <div class="triangle"></div>
+            <div class="message">
+              안녕하세용
+            </div>
+          </li>
+          <li class="me">  
+            <div class="entete">
+              <h3>10:12AM, Today</h3>
+              <h2>나</h2>
+              <span class="status blue"></span>
+            </div>
+            <div class="triangle"></div>
+            <div class="message"> 
+              안녕하세요
+            </div>
+          </li>
+          <li class="me">
+            <div class="entete">
+              <h3>10:12AM, Today</h3>
+              <h2>나</h2>
+              <span class="status blue"></span>
+            </div>
+            <div class="triangle"></div>
+            <div class="message">
+              반갑습니다
+            </div>
+            <div class="dm my-dm">
+              <div>(속닥속닥) 내가 보낸 디엠</div>
+            </div>
+            <div class="dm">
+              <div>(속닥속닥) 남이 보낸 디엠</div>
+            </div>
+           </li>
+        </ul>
+        <footer>
+          <textarea placeholder="Type your message" id="msg_box"></textarea>
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
+          <!-- <a href="#">Send</a> -->
+         
+          <!-- <button onclick="btnSend()">send</button> -->
+          <select id="members">
+            <option value="전체">전체</option>
+          </select>
+           <a href="#" onclick="btnSend()">Send</a> 
 
-          <i class="uil uil-ellipsis-v"></i>
-        </div>
-      </div>
-      <div class="phone-body">
-        <div class="message left">
-          <p>
-            That sounds great, I'd be <br />
-            happy to discuss more.
-          </p>
-        </div>
-        <div class="message left">
-          <p>
-            Could you send over some <br />
-            pictures of your dog please
-          </p>
-        </div>
-        <div class="pictures">
-          <img src="images/dog-image-1.jpg" alt="" />
-          <img src="images/dog-image-2.jpg" alt="" />
-          <img src="images/dog-image-3.jpg" alt="" />
-        </div>
-        <div class="message right">
-          <p>
-            Here are a few pictures. She's <br />
-            a happy girl!
-          </p>
-        </div>
-        <div class="message right">
-          <p>Can you make it?</p>
-        </div>
-        <div class="message left">
-          <p>
-            She looks so happy! The time <br />
-            we discussed works. How <br />
-            long shall I take her out for?
-          </p>
-        </div>
-        <div class="payment">
-          <div class="payment-left">
-            <i class="uil uil-circle"></i>
-            <p>30 minute walk</p>
-          </div>
-
-          <p class="amount">$29</p>
-        </div>
-        <div class="payment">
-          <div class="payment-left">
-            <i class="uil uil-circle"></i>
-            <p>1 hour walk</p>
-          </div>
-          <p class="amount">$49</p>
-        </div>
-        <div class="type-message">
-          <p>Type a message...</p>
-          <div class="send">
-            <i class="uil uil-angle-right"></i>
-          </div>
-        </div>
-      </div>
+        </footer>
+      </main>
     </div>
-   
-    <div class="purpleBody"></div>
-    <div class="greybody"></div>
-  </body>
+    <script>
+
+      const username = prompt('닉네임을 입력해주세요') //팝업창 +서버로 닉보내주기 
+
+      const socket = io.connect(); //socket id띄우는 부분 . ㅇㅇ님이 입장했습니다. 323줄까지//
+
+      socket.on("connect", () => {
+          console.log("server connected")
+          socket.emit("username", username);  //서버로 닉보내주기
+
+  ;    });
+      
+      let my_id = ''    //전역변수로 설정
+      socket.on("info", (socketID)=>{  //소켓아이디를 받아준다
+        my_id= socketID  //마이아이디에 소켓아이디를 할당. 변수설정해서 다른데에서도 사용할수있게  .. 
+        //let my_id=""를 여기서해주면 밑에 코드들에서 my_id를 못가져오기때문에 밖에서 전역변수로 설정
+
+      }) 
+
+      socket.on('notice', (msg)=> {
+      
+        const container = document.getElementById("chat");
+        console.log(container)
+        const div =document.createElement("div");
+        div.classList.add('notice');
+        div.textContent = msg;
+        container.appendChild(div);
+  
+      })
+      
+      socket.on('newMSG', (json) => {   //msg:메세지 ,from:보낸 사람의 소켓 아이디, username:보낸 사람의 닉네임 . josn이라는 데이터. 클라이언트에서 보낸거. json= {msg:~~~, from:~~~, username:~~~~} 2번
+        const container =document.getElementById("chat"); //강사님거는 여기가 container인데 나는 챗. 왜냐면 메시지가 chat. you.message.이걸로 css가 돼잇어서 
+        const li = document.createElement('li');
+        const div = document.createElement('div');
+
+        // const span = document.createElement('span');
+
+        // div.textContent = json.msg;
+        div.textContent = json.username + " : " +json.msg;  //닉네임뜨게하는 거 
+                 
+
+        if(my_id == json.from){
+          if(json.is_dm) li.classList.add('my-dm', 'dm')
+          else li.classList.add('my-chat')
+        }
+        else{
+          if(json.is_dm) li.classList.add('dm')
+          else li.classList.add('otehr-chat');    
+        }
+       
+        div.classList.add('message')
+        console.log(my_id)
+        // span.classList.add('status green') 
+
+        if(my_id == json.from ) li.classList.add('me')    //채팅보낸사람이 내 아이디=닉네임인지 비교하는 조건문 ! 나면 오른쪽에 상대방이면 왼쪽에 뜨도록 
+        else li.classList.add('you');
+
+        li.appendChild(div);
+        container.appendChild(li);
+      })
+      
+      socket.on("list", (list)=>{   //6번.리스트받아오기 디엠.    ??????????????????
+        console.log(list)
+        const member_list = document.getElementById('members'); //셀렉트박스 선택 //리스트에 업데이트가있을때마다 셀렉트박스를 초기화시킨다
+        //select box option tag 모두 지우기 
+        while(member_list.firstChild) member_list.removeChild(member_list.lastChild)  //멤버리스트가 셀렉트박스고 퍼스트차일드는 그의 첫번째요소. 그리고 라스트차일드는 셀렉트박스의 마지막요소. 
+        //첫번재요소가있으면 마지막 요소를 지운다 (그래서 계속 초기화되게 )
+        const option = document.createElement('option') 
+        option.text = "전체"   //그리고 첫번째옵션에 전체라는걸 넣어준다!
+        option.value = '전체'
+        member_list.appendChild(option)
+        console.log(Object.entries(list))  
+        //그다음에 포문돌면서 계속 닉 넣어주기 
+        for( let [key, value] of Object.entries(list)){
+          //배열안에 첫번째요소가 키, 두번째요소가 value  키는 그거 문자,, value는 길동이. for반복문돌면서 추가됨 value가 사람이름 
+          console.log(key,value)
+          const option =document.createElement('option')
+          option.text =value;
+          option.value =value;
+          member_list.appendChild(option)
+        }
+      })
+      
+      const btnSend = () => {
+        const input =document.getElementById('msg_box')    //msg_box는 인풋상자 아이디
+        const to = document.getElementById('members').value;
+        socket.emit('send', {msg : input.value, to })  //to는  to: to랑 똑같은거임 {to: to}
+      }
+    
+
+    </script>
+    
+</body>
 </html>
