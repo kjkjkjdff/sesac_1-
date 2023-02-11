@@ -17,7 +17,7 @@ const upload = multer({
         var ext = path.extname(file.originalname);  //ext확장자명을 오리지널 파일이름으로 올라오도록 바굼!
         cb(null, file.originalname);
        // if(ext !== '.mp3' ) cb(new Error('PNG, JPG만 업로드하세요')) //확장자ext가 mp3가 아니면 png,jpg만 업로드하세요 라고 띄우고
-      //  else cb(null, file.originalname); //그게 아니면~~ 확장자가 mp3인 경우 파일의 원래이름을 띄운다!
+      //  else cb(null, file.originalname); //그게 아니면~~ 확장자가 mp3인 경우 파일의 원래이름을 띄운다!.
       }
     })
   });
