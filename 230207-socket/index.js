@@ -16,7 +16,7 @@ io.on('connection', (socket)=> {
   socket.emit('welcome',{msg: 'welcome'});
   
   socket.on('response', (str) => {
-      console.log(str);      // socket.emit('response', 'hello')을 받는거 
+      console.log(str);      // socket.emit('response', 'hello')을 받는거 .
   })
 
   socket.on('disconnect', ()=> {

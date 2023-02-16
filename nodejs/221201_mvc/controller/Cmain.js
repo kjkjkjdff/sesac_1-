@@ -29,4 +29,4 @@ exports.post = (req, res) => {
 // router.get("/test", controller.test); 
 // router.post("/postForm", controller.post); 이렇게 개별적으로 불러온다...(?)
 
-//module.exports=router;하면 const router =require("./routes");여기에서 reuqire부분에 들어가는데.
+//module.exports=router;하면 const router =require("./routes");여기에서 reuqire부분에 들어가는데..
