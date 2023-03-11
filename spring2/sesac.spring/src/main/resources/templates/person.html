@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>name</th>
+        <th>age</th>
+    </tr>
+
+    <tr th:each=" person : ${userList}">
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.age}"></td>
+<!--        오 th:each=" person : ${userList}에 있는 person이랑 td th:text="${person.name}에 있는 person이랑 같아야됨!!->
+    </tr>
+</table>
+</body>
+</html>
