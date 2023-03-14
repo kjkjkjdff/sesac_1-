@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--맨 위 패키지이름.인터페이스파일이름 그니까 sesac.sesac_mybatis.mapper.인터페이스이름-->
+
+<mapper namespace="sesac.sesac_mybatis.mapper.MainMapper">
+    <select id="retrieveAll" resultType="sesac.sesac_mybatis.domain.User">
+        SELECT user.* FROM user
+    </select>
+</mapper>
+<!--    4. 메인맵퍼에서 리트리브올 함수가 이 xml을 실행한다. id가 리트리브올인걸 실행하는거임. 맵퍼 인터페이스와 동일하게 이름 맞춰야됨 - -->
+<!--    resulttype에 맞는걸로 겨과가 나온다. User라고 적혀있기때문에 LIST<User>라고 오는거임 . 그게 메인서비스로 전달이된다. -->

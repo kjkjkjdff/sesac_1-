@@ -221,7 +221,7 @@ public String voAPI3(@RequestBody UserVO userVO) {
     @PostMapping("/axios/vo/login")
     @ResponseBody
     public String axiosvoAPI7(@RequestBody LoginVO loginVO){
-        String msg = loginVO.getName()+"님이 로그인했습니다";...
+        String msg = loginVO.getName()+"님이 로그인했습니다";
         return msg;
     }
 }
