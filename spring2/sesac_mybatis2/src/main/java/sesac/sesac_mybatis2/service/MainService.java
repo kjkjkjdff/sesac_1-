@@ -43,7 +43,7 @@ public class MainService {
     }
 
 
-    public void addUser(User user){mainMapper.insertUser(user);}
+    public void addUser(User user){mainMapper.insertUser(user);}}
     //9. 메인서비스에서온 addUser실행
 
 
