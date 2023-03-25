@@ -57,7 +57,7 @@ public class BoardService {
         Board board = new Board();
         board.setId(boardListDTO.getID());//엔티티안에 아이디라는 값이 담겼다.  보드레파지토리가 실행될때 아이디가 있냐없냐가 다르다.
         //보드 파일에 아이디 값이오면 원래걸 찾아서 새롭게 덮어쓰고 보드에 아이디값이 없으면 새롭게 인설트하는거임. 세이브함수실행시킬때. 세이브는 인설트,업데이트할때 둘다쓴다.
-        //SETID는 넣어주는거고. boardListDTO에서 아이디를 가져와서 보드에 id를 넣어준다.  위에 글쓰기에서는 getid를 못하는게, 글을써야 id가 만들어지니까 .. 보드리스트dto랑 보드라이트dto는 그냥 쌤이 따로만든거임 
+        //SETID는 넣어주는거고. boardListDTO에서 아이디를 가져와서 보드에 id를 넣어준다.  위에 글쓰기에서는 getid를 못하는게, 글을써야 id가 만들어지니까 .. 보드리스트dto랑 보드라이트dto는 그냥 쌤이 따로만든거임
         board.setTitle(boardListDTO.getTitle());
         board.setContent(boardListDTO.getContent());
         board.setWriter(boardListDTO.getWriter());
