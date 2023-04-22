@@ -77,7 +77,7 @@ exports.delete = (req, res) => {
 // }
 
 
-exports.update_number = (req,res) => { //리드보드에서 업데이트보드로 /user/update?number=<%=data.number%>에서 ?뒤에있는 부분 넘겨주는 방법임.
+exports.update_number = (req,res) => { //리드보드에서 업데이트보드로 /user/update?number=<%=data.number%>에서 ?뒤에있는 부분 넘겨주는 방법임..
     console.log( req.query.number );
     Board.findOne({
         where : { 
